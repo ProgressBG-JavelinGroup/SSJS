@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Essentials</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <!-- css & themes include -->
+    <link rel="stylesheet" href="../../../lib/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../../../outfit/css/themes/projector.css" id="theme">
+    <!-- Printing and PDF exports -->    <script>        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? '../../../lib/reveal.js/css/print/pdf.css' : '../../../lib/reveal.js/css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <!-- CUSTOM -->
+    <base target="_blank">
+</head>
+<body>
+    <div class="reveal default center" data-transition-speed="default" data-background-transition="default">
+        <div class="top_links">
+			<a class="home_link" href="/index.html#Course_Intro" target="_top"><i class="fa fa-home"></i></a>
+			<span class="help_link" href="#"><i class="fa fa-question"></i></span>
+			<div class="help_text">
+				<div><span>N/Space</span><span>Next Slide</span></div>
+				<div><span>P</span><span>Previous Slide</span></div>
+				<div><span>O</span><span>Slides Overview</span></div>
+				<div><span>ctrl+left click</span><span>Zoom Element</span></div>
+			</div>
+		</div>
+        <div class="footer theme_switch">
+            <a href="#" onclick="document.getElementById('theme').setAttribute('href','../../../outfit/css/themes/dark.css'); return false;">Dark</a>
+            <a href="#" onclick="document.getElementById('theme').setAttribute('href','../../../outfit/css/themes/light.css'); return false;">Light</a>
+            <a href="#" onclick="document.getElementById('theme').setAttribute('href','../../../outfit/css/themes/projector.css'); return false;">Projector</a>
+        </div>
+        <div class="slides">
+<!--
+########################################################
+##################### SLIDES START #####################
+########################################################
+-->
+<section><h1>JavaScript Essentials</h1></section>
+<section data-transition="zoom">
+	<section>
+		<div class="copyright">
+			<div class="note">
+				<p>Created for</p>
+			</div>
+			<div class="company">
+				<a href="http://www.javelingroup.com/">
+					<img src="../../../outfit/images/for_slides/JavelinLogo.png" alt="JavelinGroup" style="border-radius: 100%">
+				</a>
+			</div>
+		</div>
+	</section>
+	<section class="copyright" data-transition="zoom" style="margin-top: -2em;">
+		<div class="note">
+			<p>Created by</p>
+		</div>
+		<div class="company">
+		   <div class="LI-profile-badge"  data-version="v1" data-size="large" data-locale="en_US" data-type="vertical" data-theme="dark" data-vanity="ivapopova"><a class="LI-simple-link" href='https://bg.linkedin.com/in/ivapopova?trk=profile-badge'>Iva E. Popova</a></div>
+		</div>
+		<!-- <div class="author">
+			<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
+		</div> -->
+	</section>
+</section>
+
+
+<section data-notes="20min"><h2>Variables hoisting: declarations vs assignments</h2>
+	<section>
+		<dl class="fa">
+			<dt>Declaration</dt>
+			<dd>Happens on <em>parsing stage</em></dd>
+			<dt>Assignment</dt>
+			<dd>Happens on <em>execution stage</em></dd>
+		</dl>
+	    <aside class="notes"></aside>
+	</section>
+	<section>
+		<pre><code rel="JS" class="js">
+			var a;  // declaration -> parsing stage
+			a = 10; // initialization -> execution stage
+
+			var b = 5; // shortcut for 2 statements: declaration and initialization
+		</code></pre>
+	</section>
+	<section>
+		<dl class="fa">
+			<dt>Variable declarations (and declarations in general) are processed before any code is executed.</dt>
+			<dt>It looks (note - just looks) like the variable declarations are moved to the top of your program.</dt>
+			<dt>This behaviour is what we call <span class="note">hoisting</span> in JavaScript.</dt>
+			<dt>"Hoisting" is not specified in ECMAScript standard, but is commonly accepted name.</dt>
+		</dl>
+	</section>
+	<section>
+		<pre><code rel="JS" class="js">
+			var a;
+			a = 10;
+			console.log(`a = ${a}`);	// a = 10
+
+			console.log(`b = ${b}`);	// b = undefined
+			var b = 5;
+
+			console.log(`c = ${c}`); 	// ReferenceError: c is not defined
+		</code></pre>
+	</section>
+	<section>
+		<pre><code rel="JS" class="js">
+			// the equivalent of the next code:
+			// ▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾
+			// console.log(`b = ${b}`);
+			// var b = 5;
+			// ▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴
+			// is:
+
+			var b;
+			console.log(`b = ${b}`);
+			b = 5
+		</code></pre>
+	</section>
+</section>
+<section><h2>The single var pattern</h2>
+	<section>
+		<dl class="fa">
+			<dt>Hoisting can led to some misunderstandings and problems</dt>
+			<dt>Better to use the "single var pattern": <span class="note">declare all function variables in the top of the function with a single <code>var</code> statement.</span></dt>
+		</dl>
+	</section>
+	<section>
+		<pre><code rel="JS" class="js">
+			function foo(){
+				var a,b
+					x = 20,
+					userName = 'Ada';
+
+				// do something with data
+			}
+		</code></pre>
+	</section>
+	<section>
+		<dl class="fa">
+			<dt>The adoption of the single var pattern will also has the next benefits:</dt>
+			<dd>provides a single place to look for all the local variables needed by the function</dd>
+			<dd>helps you remember to declare variables and therefore minimize globals</dd>
+		</dl>
+	</section>
+</section>
+
+<section><h2>Naming conventions</h2>
+	<dl class="fa">
+		<dt>Use <span class="note">camelCase</span> to separate visually multi-words names</dt>
+		<dt>Do not prefix your variables with dollar sign (<code>$</code>), as this is the convention used in many libraries, like jQuery.</dt>
+		<dt>Do not prefix your ordinary variables with underscore (<code>_</code>), as this is a common convention for naming private object members.</dt>
+	</dl>
+    <aside class="notes"></aside>
+</section>
+
+
+<section class="disclaimer" data-background="../../../outfit/images/for_slides/the_end_on_sand.jpg">
+     <p>These slides are based on</p>
+     <p>customised version of </p>
+     <p><a href="http://hakim.se/">Hakimel</a>'s <a href="http://lab.hakim.se/reveal-js">reveal.js</a></p>
+     <p>framework</p>
+</section>
+<!--
+########################################################
+##################### SLIDES END   #####################
+########################################################
+-->
+        </div>
+    </div>
+    <!-- Custom processing -->
+    <script src="../../../outfit/js/slides.js"></script>
+    <!-- external scripts -->
+    <script src="../../../lib/reveal.js/lib/js/head.min.js"></script>
+    <script src="../../../lib/reveal.js/js/reveal.js"></script>
+     <!-- init reveal -->
+    <script>
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        var highlightjsTabSize = '  ';
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            slideNumber: 'c/t',
+            keyboard: true,
+            history: true,
+            center: true,
+            width: '100%',
+            height: '100%',
+            // slide transition
+            transition: 'concave', // none/fade/slide/convex/concave/zoom
+            // Factor of the display size that should remain empty around the content
+            margin: 0.1,
+            // shift+maous click to zoom in/out element
+            zoomKey: 'ctrl',
+            // theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+            // transition: Reveal.getQueryHash().transition || 'default'
+            // Optional reveal.js plugins
+            dependencies: [
+                { src: '../../../lib/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                { src: '../../../lib/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: '../../../lib/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: '../../../lib/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.configure({tabReplace: highlightjsTabSize}); hljs.initHighlightingOnLoad()(); } },
+                { src: '../../../lib/reveal.js/plugin/zoom-js/zoom.js', async: true },
+                { src: '../../../lib/reveal.js/plugin/notes/notes.js', async: true }
+            ]
+        });
+  	</script>
+</body>
+</html>

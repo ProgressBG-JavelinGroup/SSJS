@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>thisContext</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	function Constructor(id) {
+		this.id = id;
+		this.counter = 0;
+
+		var __count = function(){
+			this.counter++;
+		}
+		this.sayHello = function(){
+			console.log(`this in method: ${this}`);
+			__count.bind(this);
+			__count();
+		}
+	}
+
+	var obj1 = new Constructor(1);
+	obj1.sayHello();
+	obj1.sayHello();
+	obj1.sayHello();
+
+	console.log("obj1.counter: ", obj1.counter);
+
+
+</script>
+</html>

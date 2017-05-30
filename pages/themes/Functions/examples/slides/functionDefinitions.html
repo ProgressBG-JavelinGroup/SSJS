@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>functionDefinitions</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	var examples = {
+		'declaration': function(){
+			function declared(){
+				console.log("I'm declared");
+			}
+
+			console.dir(declared);
+		},
+		'expression': function(){
+			var expr = function(){
+				console.log("I'm expressed");
+			}
+
+			console.dir(expr);
+		},
+		'constructor': function(){
+			var constructed = new Function('   \
+				console.log("Im constructed"); \
+			');
+
+			console.dir(constructed);
+		},
+		'conditionalDeclaration':function(){
+			var x = 1;
+			if ( x == 1){
+				function f1(){
+					console.log("x:", x);
+				}
+			}else if( x == 2){
+				function f2(){
+					console.log("x:", x);
+				}
+			}else{
+				function f3(){
+					console.log("x:", x);
+				}
+			}
+
+			console.dir(f1);
+			console.dir(f2);
+			console.dir(f3);
+		},
+		'conditionalDeclaration2': function(){
+			var a = true;
+
+			if (a) {
+			  function foo() { console.log("a"); }
+			}
+			else {
+			  function foo() { console.log("b"); }
+			}
+
+			foo(); // "b is the output"
+		}
+	};
+
+	examples.declaration();
+	examples.expression();
+	examples.constructor();
+</script>
+</html>

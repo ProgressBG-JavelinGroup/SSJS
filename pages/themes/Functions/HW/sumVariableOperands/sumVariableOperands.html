@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>sumVariableOperands</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	var sum = function(){
+		console.log("arguments:", arguments);
+		var sum = 0;
+		for (var i = 0; i < arguments.length; i++) {
+			sum += arguments[i]
+		}
+
+		return sum;
+	}
+
+	console.log("sum(2,3):", sum(2,3));
+</script>
+</html>

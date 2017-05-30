@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JS_Overview</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	var examples = {
+		'dynamicVars': function(){
+		//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+			"use strict";
+			var a;
+			a = 5;
+			a = "Howdy"; // no problem!
+			a = [1,2,3]; // no problem, again!
+		//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+		},
+		'functionAsObject': function(){
+		//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+			"use strict";
+			function f(){
+				console.log(`I'm a function`);
+			}
+			f();
+
+			f.data = "I'm an object";
+			console.log(f.data);
+
+			//I'm a function
+			//I'm an object
+		//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+		},
+		'arrays': function(){
+		//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+			"use strict";
+			var users = [
+				'bg',
+				{ name: 'user1', pass: 'pass1'},
+				{ name: 'user2', pass: 'pass2'},
+				{ name: 'user3', pass: 'pass3'},
+			];
+
+			var lastIndex = users.length - 1;
+
+			console.dir(users[0]);
+			console.dir(users[lastIndex]);
+		//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+		},
+	}
+
+	examples.arrays();
+</script>
+</body>
+</html>

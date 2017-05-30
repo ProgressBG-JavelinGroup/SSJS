@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Introduction and overview</title>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+	<!-- css & themes include -->
+	<link rel="stylesheet" href="../../../lib/reveal.js/css/reveal.css">
+	<link rel="stylesheet" href="../../../outfit/css/themes/projector.css" id="theme">
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? '../../../lib/reveal.js/css/print/pdf.css' : '../../../lib/reveal.js/css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+	<!-- custom -->
+	<link rel="stylesheet" href="../../../outfit/css/reveal.js.css">
+	<base target="_blank">
+</head>
+<body>
+	<div class="reveal default center" data-transition-speed="default" data-background-transition="default">
+		<div class="top_links">
+			<a class="home_link" href="/index.html#Course_Intro" target="_top"><i class="fa fa-home"></i></a>
+			<span class="help_link" href="#"><i class="fa fa-question"></i></span>
+			<div class="help_text">
+				<div><span>N/Space</span><span>Next Slide</span></div>
+				<div><span>P</span><span>Previous Slide</span></div>
+				<div><span>O</span><span>Slides Overview</span></div>
+				<div><span>ctrl+left click</span><span>Zoom Element</span></div>
+			</div>
+		</div>
+		<div class="footer theme_switch">
+			<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../../outfit/css/themes/dark.css'); return false;">Dark</a>
+			<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../../outfit/css/themes/light.css'); return false;">Light</a>
+			<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../../outfit/css/themes/projector.css'); return false;">Projector</a>
+		</div>
+		<div class="slides">
+<!--
+########################################################
+##################### SLIDES START #####################
+########################################################
+-->
+<section><h1>Introduction</h1></section>
+<section data-transition="zoom">
+	<section>
+		<div class="copyright">
+			<div class="note">
+				<p>Created for</p>
+			</div>
+			<div class="company">
+				<a href="http://www.javelingroup.com/">
+					<img src="../../../outfit/images/for_slides/JavelinLogo.png" alt="JavelinGroup" style="border-radius: 100%">
+				</a>
+			</div>
+		</div>
+	</section>
+	<section class="copyright" data-transition="zoom" style="margin-top: -2em;">
+		<div class="note">
+			<p>Created by</p>
+		</div>
+		<div class="company">
+		   <div class="LI-profile-badge"  data-version="v1" data-size="large" data-locale="en_US" data-type="vertical" data-theme="dark" data-vanity="ivapopova"><a class="LI-simple-link" href='https://bg.linkedin.com/in/ivapopova?trk=profile-badge'>Iva E. Popova</a></div>
+		</div>
+		<!-- <div class="author">
+			<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
+		</div> -->
+	</section>
+</section>
+
+<section data-notes="40min"><h2>Set up the development environment.</h2>
+	<section><h3>Eclipse IDE for JavaScript and Web Developers</h3>
+		<img src="images/neon - JavaScript - Eclipse _001.png">
+	</section>
+	<section><h3>Eclipse IDE for JavaScript Web Developers</h3>
+			<p>Installation:</p>
+			<a href="http://www.eclipse.org/downloads/packages/eclipse-ide-javascript-and-web-developers/neon3rc3">Eclipse IDE for JavaScript Web Developers</a>
+		</dl>
+	</section>
+	<section><h3>NodeJS</h3>
+		<p>On Windows</p>
+		<dl class="fa">
+			<dt>Download</dt>
+			<dd><a href="https://nodejs.org/en/download/">Node Downloads</a></dd>
+			<dt>Run the downloaded .msi installer </dt>
+			<dd>requires administrator privileges</dd>
+			<dt>Check if ok?</dt>
+			<dd><code>node -v</code></dd>
+			<dt>Update npm</dt>
+			<dd><code>npm install npm --global</code></dd>
+		</dl>
+	</section>
+	<section><h3>NodeJS</h3>
+		<p>Install Node.js from binaries: <a href="https://nodejs.org/en/download/package-manager/#windows">Installing Node.js via package manager</a></p>
+		<p class="note">(covers most supported OS)</p>
+		<p>For troubleshooting check: <a href="https://github.com/nodesource/distributions#debinstall">NodeSource Node.js Binary Distributions</a></p>
+	</section>
+</section>
+
+<section data-notes="40min"><h2>HelloWorld from JavaScript on Eclipse</h2>
+	<section><h3>Start new project</h3>
+		<dl class="fa">
+			<dt>File=>New=>JavaScript Project</dt>
+		</dl>
+		<div><a href="images/New JavaScript Project.png"><img style="height: 70vh" src="images/New JavaScript Project.png"></a></div>
+	</section>
+	<section>
+		<dl class="fa">
+			<dt>Create new JavaScript Source File</dt>
+			<dd>main.js</dd>
+			<dt>Write down:</dt>
+			<pre><code rel="JS" class="js">
+				console.log("Hello World");
+			</code></pre>
+			<dt>Run as Node.js Application</dt>
+			<dt>Make sure the 'Console' tab is selected</dt>
+		</dl>
+	</section>
+	<section>
+		<a href="images/workspace - JavaScript - helloWorld-main.js - Eclipse.png"><img src="images/workspace - JavaScript - helloWorld-main.js - Eclipse.png"></a>
+	</section>
+</section>
+
+<section data-notes="10min"><h2>Boost your productivity: Tern Eclipse IDE</h2>
+	<section><h3>Install</h3>
+		<a href="https://github.com/angelozerr/tern.java/wiki/Tern-Eclipse-IDE">Tern Eclipse IDE</a>
+		<div><a href="images/Tern-Install.png"><img src="images/Tern-Install.png"></a></div>
+	</section>
+	<section><h3>Install</h3>
+		<a href="images/Tern-Eclipse Marketplace.png"><img src="images/Tern-Eclipse Marketplace.png"></a>
+	</section>
+	<section><h3>Convert to Tern Project</h3>
+		<a href="images/ConvertToTernProject.png"><img src="images/ConvertToTernProject.png" style="height: 80vh"></a>
+	</section>
+	<section><h3>Tern project properties</h3>
+		<a href="images/TernProjectProperties1.png"><img src="images/TernProjectProperties1.png"></a>
+	</section>
+	<section style="font-size: .8em"><h3>Tern - Code Completions, lint, etc</h3>
+		<a href="images/TernSelectModules.png"><img src="images/TernSelectModules.png"></a>
+	</section>
+	<section><h3>Tern - Code Completions, lint, etc</h3>
+		<dl class="fa">
+			<dt>Other useful modules are:</dt>
+			<dd>ESLint</dd>
+			<dd>jQuery</dd>
+			<dd>Node.js</dd>
+		</dl>
+	</section>
+</section>
+
+<section data-notes="20min"><h2>Appendix</h2>
+	<section><h3 class="advanced">Change default port of HTTP Preview Server </h3>
+		<ol>
+			<li>Go into your workspace directory</li>
+			<li>open the file <code>.metadata.plugins\org.eclipse.wst.server.core\servers.xml</code> for edit</li>
+			<li>Find the &lt;server&gt; element for the Preview server in question</li>
+			<li>Add a port attribute, e.g. port="8181"</li>
+			<li>Restart Eclipse to pickup the change.</li>
+		</ol>
+		<a href="http://stackoverflow.com/questions/741871/wtp-http-preview-server-how-can-i-re-configure-default-server-port">(from StackOverflow)</a>
+	</section>
+	<section><h3 class="advanced">Run JavaScript in Eclipse on node.js</h3>
+		<a href="http://stackoverflow.com/questions/37743948/how-can-i-run-script-js-in-eclipse-console">How can I run script.js in Eclipse console?</a>
+	</h3></section>
+</section>
+
+
+<section><h2>Contacts</h2>
+<a href="progressbg.www.courses@gmail.com">progressbg.www.courses@gmail.com</a>
+</section>
+<section class="disclaimer" data-background="../../../outfit/images/for_slides/the_end_on_sand.jpg">
+	 <p>These slides are based on</p>
+	 <p>customised version of </p>
+	 <p><a href="http://hakim.se/">Hakimel</a>'s <a href="http://lab.hakim.se/reveal-js">reveal.js</a></p>
+	 <p>framework</p>
+</section>
+<!--
+########################################################
+##################### SLIDES END   #####################
+########################################################
+-->
+		</div>
+	</div>
+	<!-- Custom processing -->
+	<script src="../../../outfit/js/slides.js"></script>
+	<!-- external scripts -->
+	<script src="../../../lib/reveal.js/lib/js/head.min.js"></script>
+	<script src="../../../lib/reveal.js/js/reveal.js"></script>
+	<!-- init reveal -->
+	<script>
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        var highlightjsTabSize = '  ';
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            slideNumber: 'c/t',
+            keyboard: true,
+            history: true,
+            center: true,
+            width: '100%',
+            height: '100%',
+            // slide transition
+            transition: 'concave', // none/fade/slide/convex/concave/zoom
+            // Factor of the display size that should remain empty around the content
+            margin: 0.1,
+            // shift+maous click to zoom in/out element
+            zoomKey: 'ctrl',
+            // theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+            // transition: Reveal.getQueryHash().transition || 'default'
+            // Optional reveal.js plugins
+            dependencies: [
+                { src: '../../../lib/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                { src: '../../../lib/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: '../../../lib/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: '../../../lib/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.configure({tabReplace: highlightjsTabSize}); hljs.initHighlightingOnLoad()(); } },
+                { src: '../../../lib/reveal.js/plugin/zoom-js/zoom.js', async: true },
+                { src: '../../../lib/reveal.js/plugin/notes/notes.js', async: true }
+            ]
+        });
+    </script>
+	<!-- linkedin badge -->
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</body>
+</html>

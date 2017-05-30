@@ -1,0 +1,201 @@
+ /*fonts*/
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web);
+@import url(https://fonts.googleapis.com/css?family=Glass+Antiqua);
+@import url(https://fonts.googleapis.com/css?family=Modern+Antiqua);
+/*other*/
+@import	url('common.css');
+
+body{
+	line-height: 1.2em;
+    color: #4d4b4d;
+    background-color: #fff;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/*MAIN*/
+main{
+	width: 50rem;
+	min-height: 59vh;
+	margin: 0 auto;
+	/*border: 1px solid #888;*/
+}
+
+/*SYLLABUS TITLE*/
+.syllabus>h1{
+	margin: 0em 0 1em 0;
+	padding: 0;
+	font-size:2em;
+	text-align: center;
+	/*text-transform: uppercase;*/
+	color: #999;
+}
+.syllabus>h1:hover{
+    /*font-size: 1.4em;*/
+    cursor: auto;
+}
+.syllabus .toggleButtons{
+    /*float: right;*/
+    /*display: inline-block;*/
+    margin: 0 0 3em 0;
+    padding: 0;
+    font-size: 1em;
+    font-weight: normal;
+    text-align: center;
+    /*vertical-align: top;*/
+    color: #999;
+}
+.syllabus .toggleButtons>.toggleThemes{
+    margin: 0 .3em 0 1em;
+    color: #71BA8E;
+}
+.syllabus .toggleButtons>.toggleSubThemes{
+    margin: 0 0em 0 0;
+    color: #FFBA7E;
+}
+.syllabus .toggleButtons>span:hover{
+    /*font-size:.9em;*/
+    cursor: pointer;
+}
+
+
+/*THEMES*/
+.themes{
+	margin: 0 0 2em 0;
+	counter-reset: section topics;
+}
+/*SECTIONS*/
+.themes>article{
+	padding: 0;
+	margin: 0;
+	line-height: 1.7em;
+}
+.themes>article>h2{
+	margin: 1em 0 .3em 0;
+	font-size: 1.2em;
+	color: #999;
+	font-style: italic;
+	border-bottom: .01em solid #71BA8E;
+}
+.themes>article>h2>span{
+
+}
+.themes>article>h2:before{
+	counter-increment: section;
+	content: "Theme " counter(section) ". ";
+	font-size: .9em;
+	color: #71BA8E;
+}
+.themes>article>section{
+	position: relative;
+	margin: 0 0 0 1em;
+}
+.themes>article h3{
+	display: inline-block;
+    width: 100%;
+    margin: .3em 0;
+    font-size: 1.1em;
+    font-weight: normal;
+    color: #333;
+    line-height: 1.5em;
+    letter-spacing: .1em;
+    border-bottom: .01em dotted #EADAAD;
+}
+.themes>article h3:before{
+	counter-increment: topics;
+	content: counter(topics) ". ";
+	display: inline-block;
+	width: 2em;
+	margin: 0 .3em 0 0;
+	text-align: right;
+	font-size: .9em;
+	color: #FFB97C;
+}
+.themes>article h3:after{
+    margin-left: .5em;
+    font-family: FontAwesome;
+    text-decoration: none;
+    font-size: .9em;
+    color: #FFBA7E;
+}
+.themes>article h3.arrow_down:after{
+	content: "\f0d7";
+}
+.themes>article h3.arrow_up:after{
+	content: "\f0d8";
+}
+.themes>article h3>a{
+	text-decoration: none;
+}
+/*powerpoint icon*/
+/*.themes>article h3>a:before{
+	position: relative;
+	z-index: -4;
+	content: "\f1c4";
+	margin: 5em .5em 0 -1.3em;
+    font-family: FontAwesome;
+    text-decoration: none;
+    font-size: 1.3em;
+    color: #FFBA7E;
+}*/
+.themes>article h3>a:hover{
+	background: none;
+    font-weight: bold;
+    /*important - because of strange chrome bug: depending on href value not always work !!!;*/
+    color: #FFF;
+    text-shadow:
+        1px 1px 1px #FFB77B,
+        -1px -1px 1px #FFB77B,
+        2px 2px 2px #FFB97C,
+        -2px -2px 2px #FFB97C,
+        3px 3px 3px #FFBA7E,
+        -3px -3px 3px #FFBA7E,
+        4px 4px 4px #FFBA7E,
+        -4px -4px 4px #FFBA7E;
+    animation: shake .5s ease-in-out 1;
+    border: none;
+}
+.themes>article>section>ol{
+	margin: 0.1em 0 0.6em 2.5em;
+}
+
+.sub_themes>li>ol{
+	/*list-style-type: disc;*/
+	margin: 0 0 0 2em;
+}
+
+
+/*STATS*/
+article>section>h3{
+	content: attr(data-time);
+}
+.subThemeHours, .themeHours{
+	float: right;
+	font-size: 1rem;
+	/*margin: 0 .5em 0 0;*/
+	color: #CCC;
+}
+.subThemeHours:before{
+	content: "[ ";
+}
+.subThemeHours:after{
+	content: ' h.]';
+}
+.stats>#total_hours{
+	float: left;
+	height: 1em;
+	color: #7B3B3B;
+}
+.stats>#total_hours:before{
+	content: "total hours: ";
+}
+.stats>#total_days{
+	float: right;
+	height: 1em;
+	color: #7B3B3B;
+}
+.stats>#total_days:before{
+	content: "total days: ";
+}

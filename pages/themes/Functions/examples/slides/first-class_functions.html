@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Functions as first class citizens</title>
+</head>
+<body>
+<script type="text/javascript">
+	var examples={
+		'curryingSum': function(){
+			var sum = function(x){
+				return function(y){
+					return x+y;
+				}
+			}
+			console.log( "sum:", sum(2)(3) );
+		},
+		'curryingCalc':function(){
+			// console.log("Line 45:");
+			var mul = function(x,y){return x*y};
+			var div = function(x,y){return x/y};
+			var add = function(x,y){return x+y};
+			var sub = function(x,y){return x/y};
+
+			function calc(op){
+				return	function(x){
+					return function(y){
+						console.log(op(x,y));
+					}
+				}
+			}
+
+			calc(mul)(5)(6);
+
+			console.log(mul(2,3));
+		},
+		'notCurryingCalc': function(){
+			var mul = function(x,y){return x*y};
+			var div = function(x,y){return x/y};
+			var add = function(x,y){return x+y};
+			var sub = function(x,y){return x/y};
+
+			function calc(op, x, y){
+				console.log(op(x,y));
+			}
+
+			calc(mul,5,6);
+		},
+		'timeoutF': function(){
+			var greeting = function(){
+				alert("Welcome");
+			}
+
+			setTimeout(greeting, 1000);
+		},
+		'timeoutFWithArgs':function(){
+
+			var greeting = function(name){
+				return function(){
+					alert("Welcome, "+ name);
+				}
+			}
+
+			setTimeout(greeting("iva"), 4000);
+		},
+		'IIFE':function(){
+			(function(x,y){
+				console.log( x+y );
+			})(2,3);
+		}
+	}
+	examples.IIFE();
+
+
+	// var add;
+	// if (0){
+ //        add = function (x,y){
+ //             x+y;
+ //        };
+ //    };
+
+ //    console.log("add:", add);
+
+</script>
+</body>
+</html>

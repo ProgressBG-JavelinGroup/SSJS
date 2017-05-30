@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SSJS: Agenda</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Sublime Text3, SASS">
+    <!-- VENDORs -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- CUSTOMs -->
+    <link rel="stylesheet" type="text/css" href="outfit/css/master.css">
+    <link rel="stylesheet" type="text/css" href="outfit/css/agenda.css">
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+
+    <base target="_blank">
+</head>
+<body class="background_gradient_left_right">
+<header>
+    <h2>JavelinGroup</h2>
+    <h1>Server Side JavaScript and Web Programming</h1>
+</header>
+<main>
+    <!-- <section class="course_about"><h1></h1></section> -->
+    <section class="syllabus">
+        <h1>Syllabus</h1>
+        <div class="toggleButtons">
+            <span class="toggleThemes">Toggle Themes</span>
+            <span class="toggleSubThemes">Toggle sub-themes</span>
+        </div>
+        <div class="themes">
+            <article><h2><span>Introduction</span></h2>
+                <section id="IntroductionAndOverview" data-time="4">
+                    <h3>Introduction & Overview</h3>
+                    <ol class="sub_themes">
+                        <li>About the course and on-line resources being used.</li>
+                        <li>Set up the development environment.</li>
+                        <li>Get familiar with Eclipse IDE</li>
+                        <li>Plug the plugins: lint, debug, test. Speed up with JSDT.</li>
+                        <li>Simulate the server environment: setup a node.js project in Eclipse.</li>
+                    </ol>
+                </section>
+                <section id="JS_Overview" data-time="4">
+                    <h3>JavaScript Overview</h3>
+                    <ol class="sub_themes">
+                        <li>Historical overview in 20 minutes (or how the history repeats itself)</li>
+                        <li>JavaScript standards: ES5, ES6 and ES.Next?</li>
+                        <li>The difference between JavaScript and other OOP languages</li>
+                        <li>JavaScript execution environments</li>
+                        <li>JavaScript "hello world" on client-side</li>
+                        <li>JavaScript "hello world" on server-side</li>
+                    </ol>
+                </section>
+            </article>
+
+            <article><h2><span>JavaScript Syntax</span></h2>
+                <section id="WhatsInAProgram" data-time="2">
+                    <h3>What's in a program?</h3>
+                    <ol class="sub_themes">
+                        <li>Program structure</li>
+                        <li>Statements</li>
+                        <li>Expressions</li>
+                        <li>Comments</li>
+                        <li>Keywords</li>
+                        <li>Identifiers - naming conventions</li>
+                        <li>Variables declaration</li>
+                    </ol>
+                </section>
+                <section id="DataTypes" data-time="2">
+                    <h3>Data Types</h3>
+                    <ol class="sub_themes">
+                        <li>Primitive types (number, string, boolean, null, undefined)</li>
+                        <li>Reference types</li>
+                    </ol>
+                </section>
+                <section id="Operators" data-time="4">
+                    <h3>Operators</h3>
+                    <ol class="sub_themes">
+                        <li>Assignment Operators</li>
+                        <li>Arithmetic Operators
+                            <ol>
+                                <li>add and subtract</li>
+                                <li>multiply, divide, and modulus</li>
+                            </ol>
+                        </li>
+                        <li>Unary Operators
+                            <ol>
+                                <li>Increment/Decrement</li>
+                                <li>Unary Plus and Minus</li>
+                            </ol>
+                        </li>
+                        <li>Comparison Operators</li>
+                        <li>Logical Operators</li>
+                        <li>Bitwise Operators</li>
+                        <li>Comma Operator</li>
+                        <li>Type Operators</li>
+                        <li>Notes on Types Coercion</li>
+                    </ol>
+                </section>
+                <section id="Statements" data-time="4">
+                    <h3>Statements</h3>
+                    <ol class="sub_themes">
+                        <li><code>if, else-if</code> Statements</li>
+                        <li>for Statement</li>
+                        <li>for-in Statement</li>
+                        <li><code>while, do-while</code> Statement</li>
+                        <li><code>break</code> and <code>continue</code> Statements</li>
+                        <li><code>switch</code> Statement</li>
+                    </ol>
+                </section>
+                <section id="ReferenceTypesOverview" data-time="4">
+                    <h3>Reference Types Overview</h3>
+                    <ol class="sub_themes">
+                        <li>The Object Type</li>
+                        <li>The Array Type</li>
+                        <li>The Date Type</li>
+                        <li>The RegExp Type</li>
+                        <li>The Function Type</li>
+                        <li>Primitive boxing: the Number, Strung and Boolean Wrappers</li>
+                    </ol>
+                </section>
+            </article>
+
+            <article><h2><span>Functions, scope and closure</span></h2>
+                <section id="FunctionsBasics" data-time="4">
+                    <h3>Functions basics</h3>
+                    <ol class="sub_themes">
+                        <li>Function Definitions
+                            <ol>
+                                <li>Function Declaration</li>
+                                <li>Function Expression</li>
+                            </ol>
+                        </li>
+                        <li>Function Invocation
+                            <ol>
+                                <li>Passing Arguments</li>
+                                <li>Default Parameters</li>
+                                <li>Rest parameters</li>
+                                <li>Return Statement</li>
+                            </ol>
+                        </li>
+                    </ol>
+                </section>
+                <section id="Scope" data-time="2">
+                    <h3>Scope</h3>
+                    <ol class="sub_themes">
+                        <li>The <code>var</code>, <code>let</code> and <code>const</code> keywords</li>
+                        <li>Execution Context</li>
+                    </ol>
+                </section>
+                <section id="Hoisting" data-time="1">
+                    <h3>Hoisting</h3>
+                    <ol class="sub_themes">
+                        <li>Variables hoisting</li>
+                        <li>Function declarations hoisting</li>
+                    </ol>
+                </section>
+                <section id="FunctionExpressions" data-time="4">
+                    <h3>Function Expressions</h3>
+                    <ol class="sub_themes">
+                        <li>Immediately-invoked function expressions (IIFE)</li>
+                        <li>Closures</li>
+                        <li>First-class citizens</li>
+                        <li>callbacks</li>
+                    </ol>
+                </section>
+                <section id="Recursion" data-time="2">
+                    <h3>Recursion</h3>
+                    <ol class="sub_themes">
+                        <li>Factorial example</li>
+                        <li>Traversing the DOM</li>
+                        <li>Recursion with expressions</li>
+                    </ol>
+                </section>
+                <section id="ArrowFunctions" data-time="3">
+                    <h3>Arrow Functions</h3>
+                    <ol class="sub_themes">
+                        <li>Arrow syntax - the syntactic sugar</li>
+                        <li>Usage</li>
+                        <li>Lexical scoped arguments</li>
+                        <li>Lexical scoped this</li>
+                    </ol>
+                </section>
+            </article>
+
+            <article><h2><span>OOP with JavaScript</span></h2>
+                <section id="Classical_OOP" data-time="8">
+                    <h3>Understanding objects</h3>
+                    <ol class="sub_themes">
+                        <li>Object literal</li>
+                        <li>Properties</li>
+                        <li>"Methods" ?</li>
+                        <li>Object Creation Patterns
+                            <ol>
+                                <li>The Factory Pattern</li>
+                                <li>The Constructor Pattern</li>
+                                <li>The Prototype Pattern</li>
+                            </ol>
+                        </li>
+                        <li>Inheritance
+                            <ol>
+                                <li>Classical inheritance</li>
+                                <li>Prototype-based inheritance</li>
+                            </ol>
+                        </li>
+                        <li>ES6 classes</li>
+                    </ol>
+                </section>
+                <section id="thisContext" data-time="4">
+                    <h3>The "this" context</h3>
+                    <ol class="sub_themes">
+                        <li>"this" in global context</li>
+                        <li>"this" in function invocation context (strict or non-strict)</li>
+                        <li>"this" in method invocation context</li>
+                        <li>"this" in constructor invocation context</li>
+                        <li>"this" in call(), apply() and bind() methods</li>
+                    </ol>
+                </section>
+            </article>
+
+            <article><h2><span>JavaScript and DOM</span></h2>
+                <section id="ReferenceTypesOverview" data-time="4">
+                    <h3>Document Object Model</h3>
+                    <ol class="sub_themes">
+                        <li>Hierarchy of nodes</li>
+                        <li>Manipulating nodes</li>
+                        <li>Manipulating styles</li>
+                        <li>DOM extensions</li>
+                        <li>Events</li>
+                        <li>Cross-document messaging</li>
+                    </ol>
+                </section>
+            </article>
+
+            <article><h2><span>Web Services and APIs</span></h2>
+                <section id="cliche" data-time="4"><h3>XML Web Services</h3>
+                    <ol class="sub_themes">
+                        <li>Parse XML using JavaScript</li>
+                        <li>Live example</li>
+                    </ol>
+                </section>
+                <section id="cliche" data-time="4"><h3>JSON for Web Services</h3>
+                    <ol class="sub_themes">
+                        <li>Consume JSON data JavaScript</li>
+                        <li>A JQuery approach</li>
+                        <li>Google maps API – live example</li>
+                    </ol>
+                </section>
+                <section id="cliche" data-time="4"><h3>Web Services using XMLHttpRequest (Ajax)</h3>
+                    <ol class="sub_themes">
+                        <li>Sending HTTP Request</li>
+                        <li>Process the Response</li>
+                        <li>User Registration – live example</li>
+                    </ol>
+                </section>
+                <section id="cliche" data-time="4"><h3>RESTful Web Services</h3>
+                    <ol class="sub_themes">
+                        <li>The basics</li>
+                        <li>Let’s code: Consuming a RESTful Web Service with jQuery</li>
+                    </ol>
+                </section>
+            </article>
+
+            <article><h2><span>MV* Paradigms and Patterns</span></h2>
+                <section id="MVParadigmsAndPatterns" data-time="8">
+                    <h3>MV* Paradigms and Patterns</h3>
+
+                </section>
+            </article>
+
+            <article><h2><span>Regular Expressions in JavaScript</span></h2>
+                <section id="RegExBasis" data-time="8">
+                    <h3>RegEx basis</h3>
+                    <ol class="sub_themes">
+                        <li>Regex intro</li>
+                        <li>Special Symbols</li>
+                        <li>Capture groups</li>
+                        <li>Modifiers</li>
+                        <li>RegExp methods</li>
+                    </ol>
+                </section>
+            </article>
+
+            <article><h2><span>JavaScript Patterns</span></h2>
+                <section id="JavaScriptPatterns" data-time="6">
+                    <h3>JavaScript Modules</h3>
+                    <ol class="sub_themes">
+                        <li>Module pattern</li>
+                        <li>Revealing module pattern</li>
+                        <li>Revealing prototype pattern</li>
+                        <li>Singleton pattern</li>
+                        <li>The basics of ES6 modules</li>
+                        <li>Asynchronous modules versus synchronous scripts in browser</li>
+                        <li></li>
+                    </ol>
+                </section>
+            </article>
+
+            <article><h2><span>Good Practices</span></h2>
+                <section id="GoodPractices" data-time="2">
+                    <h3>Concise review of JavaScript Good Practices</h3>
+                    <ol class="sub_themes">
+                        <li>Code structuring conventions</li>
+                        <li>Naming conventions</li>
+                        <li>Variable type transparency</li>
+                        <li>The single var pattern</li>
+                        <li>for loops - cashing the arrays length</li>
+                        <li>Loose coupling</li>
+                        <li>Use constants</li>
+                        <li>Strict mode</li>
+                        <li>Performance and optimization</li>
+                    </ol>
+                </section>
+            </article>
+
+            <article><h2><span>Debugging JavaScript</span></h2>
+                <section id="ErrorHandling" data-time="4">
+                    <h3>Error handling</h3>
+                    <ol class="sub_themes">
+                        <li>Exceptions</li>
+                        <li>Exception handling
+                            <ol>
+                                <li>Try-catch block</li>
+                            </ol>
+                        </li>
+                        <li>Throwing exceptions</li>
+                        <li>Custom exceptions</li>
+                        <li>Identify where errors might occur</li>
+                        <li>Log errors
+                            <ol>
+                                <li>On development env: console methods</li>
+                                <li>On production env: log errors to server</li>
+                            </ol>
+                        </li>
+                    </ol>
+                </section>
+                <section id="DebuggingTechniques" data-time="2">
+                    <h3>Debugging techniques</h3>
+                    <ol class="sub_themes">
+
+                    </ol>
+                </section>
+                <section id="BrowserDevTools" data-time="2">
+                    <h3>Browser's Dev Tools</h3>
+                    <ol class="sub_themes">
+
+                    </ol>
+                </section>
+            </article>
+
+            <!-- <article><h2><span>ArticleTitile</span></h2>
+                <section id="id" data-time="0">
+                    <h3>title</h3>
+                    <ol class="sub_themes">
+
+                    </ol>
+                </section>
+            </article> -->
+        </div>
+        <div class="stats">
+            <div id="total_hours"></div>
+            <div id="total_days"></div>
+        </div>
+    </section>
+</main>
+<footer><div class="license left">
+        <p><span>Iva E. Popova.</span>, 2017.
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a></p>
+        </div>
+        <div class="right">Created for <a href=http://www.javelingroup.com/>JavelinGroup</a></div>
+</footer>
+<script type="text/javascript" src="outfit/js/CustomDOM.js"></script>
+<script type="text/javascript" src="outfit/js/agenda.js"></script>
+</body>
+</html>

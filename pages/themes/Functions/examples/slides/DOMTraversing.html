@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DOMTraverding</title>
+</head>
+<body>
+<ul>
+	<li>Item</li>
+	<li>Item</li>
+	<li class="red">Make me red</li>
+	<li>Item
+		<ul>
+			<li class="red">Make me red, too</li>
+		</ul>
+	</li>
+	<li>Item</li>
+</ul>
+<script type="text/javascript">
+	function traverseDOM(node) {
+		//*** the do what we want to do part ***//
+	    if (node.className == 'red') {
+	    	node.style.color = "red";
+	    }
+
+	    //*** the recursion (traverse) part ***//
+	    var childrens = node.children;
+
+	    // if the node has no children, the recursion will end!
+	    for (var i = 0, len = childrens.length; i<len; i++) {
+	    	traverseDOM(childrens[i]);
+	    }
+	}
+
+	traverseDOM(document.body);
+</script>
+</body>
+</html>
