@@ -219,7 +219,7 @@
                 { src: '../../../lib/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
                 { src: '../../../lib/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
                 { src: '../../../lib/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                { src: '../../../lib/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.configure({tabReplace: highlightjsTabSize}); hljs.initHighlightingOnLoad()(); } },
+                { src: '../../../lib/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.configure({tabReplace: highlightjsTabSize}); hljs.initHighlightingOnLoad(); } },
                 { src: '../../../lib/reveal.js/plugin/zoom-js/zoom.js', async: true },
                 { src: '../../../lib/reveal.js/plugin/notes/notes.js', async: true }
             ]
