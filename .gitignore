@@ -5,10 +5,8 @@
 #sublime stuff:
 *.sublime-workspace
 
-# shell tools
+# shell 
 nohup.out
-
-#shell commands
 *.sh
 
 # Logs
