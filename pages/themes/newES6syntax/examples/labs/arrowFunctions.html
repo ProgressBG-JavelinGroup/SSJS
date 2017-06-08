@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Music Player</title>
+</head>
+<body>
+	<ul>
+		<li>Song 1</li>
+		<li>Song 2</li>
+		<li>Song 3</li>
+		<li>Song 4</li>
+		<li>Song 5</li>
+	</ul>
+	<div id="stat">Now playing ${SongTitle}</div>
+<script type="text/javascript">
+	// var liNodes = document.querySelector('ul').children;
+	var liNodes = document.querySelectorAll('ul>li'),
+		oNode = document.getElementById('stat');
+
+	function Player(name){
+		this.name = name || 'Unknown Player',
+	}
+	Player.prototype.showTitle = function(event){
+		console.dir(event.target);
+		oNode.innerHTML = event.target.innerHTML;
+	}
+	var testPlayer = new Player('testPlayer');
+
+	for (var i = 0, len = liNodes.length; i < len; i++) {
+		console.dir(liNodes[i]);
+		liNodes[i].addEventListener('click', testPlayer.showTitle());
+	}
+
+
+</script>
+</body>
+</html>

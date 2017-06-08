@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>wordsCounter</title>
+	<link rel="stylesheet" type="text/css" href="wordsCounter.css">
+</head>
+<body>
+<header></header>
+<main>
+	<div id="wordsCounter">
+		<h2>Words Counter</h2>
+		<textarea placeholder="paste your text here and choose an action bellow.."></textarea>
+		<div class="controls">
+			<select  name="countType">
+				<option  value="" selected disabled="disabled">Choose action</option>
+				<option value="countSeparateWords">Count separate words</option>
+				<option value="countAllWords">Count all words</option>
+				<option value="topTenWords">Top ten words</option>
+			</select>
+			<button>Go</button>
+		</div>
+	</div>
+	<div id="results">
+		<h2>Results</h2>
+		<div class="output"></div>
+	</div>
+</main>
+</body>
+<script type="text/javascript" src="wordsCounter.js"></script>
+</html>

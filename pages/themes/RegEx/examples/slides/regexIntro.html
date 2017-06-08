@@ -1,0 +1,323 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Slides:RegEx</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+var examples = {
+	'intro': function(){
+	//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+		var strings = [
+			'alabala',
+			' alabala',
+			'Astronomy',
+			'the apple'
+		];
+		var re = /^a/;
+
+		strings.forEach((str)=>
+			re.test(str) ?
+				console.log(str+' -> match!') :
+				console.log(str+'  -> NO match!')
+		)
+	//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+	},
+	'modifiers': function(){
+	//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+		var matched,
+		        str = `alAbAla`;
+
+		matched = str.match(/a/);
+		console.log(`matched: ${matched}`); // matched: a (the first one)
+
+		matched = str.match(/a/g); //matched: a,a
+		console.log(`matched: ${matched}`);
+
+		matched = str.match(/a/gi); //matched: a,A,A,a
+		console.log(`matched: ${matched}`);
+	//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+	},
+	'quantifiers': function(){
+	//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+		matched = "ala aa bala".match(/a.?a/g);
+		console.log(`matched: ${matched}`);
+		// matched: ala,aa,ala
+
+		matched = "ala aa bala".match(/a.{3,5}a/g);
+		console.log(`matched: ${matched}`);
+		// matched: ala aa
+
+		matched = "ala aa bala".match(/a.{3,}a/g);
+		console.log(`matched: ${matched}`);
+		// matched: ala aa bala
+
+		matched = "ala aa bala".match(/a.{3,}?a/g);
+		console.log(`matched: ${matched}`);
+		// matched: ala a,a bala
+	//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+	},
+	'quantifiersGreedy': function(){
+	//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+		var matched,
+		        str = `ala bala`;
+
+		matched = str.match(/a.*?a/);
+		console.log(`matched: ${matched}`); //matched: ala bala
+	//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+	},
+	'characterSets': function(){
+	//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+		matched = "asteroid".match(/[aeiouy]/g);
+		console.log(`matched: ${matched}`);
+		// matched: a,e,o,i
+
+		matched = "asteroid".match(/[aeiouy]+/g);
+		console.log(`matched: ${matched}`);
+		// matched: a,e,oi
+
+		// match bg mobile phone numbers
+		matched = "+359888123456".match(/\+3598[7-9][0-9]{7}/g);
+		console.log(`matched: ${matched}`);
+		// matched: +359888123456
+	//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+	},
+	'characterClasses': function(){
+	//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+		// match bg mobile phone numbers
+		matched = "+359888123456".match(/\+3598[7-9]\d{7}/g);
+		console.log(`matched: ${matched}`);
+		// matched: +359888123456
+
+		var re = /[a-z]\w+/;
+		var strings = [
+			'petrov42',
+			'42petrov',
+			'ivan_pterov',
+		]
+		strings.forEach(str=>console.log(`${str.match(re)} matched in ${str}:`));
+	//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+	},
+	'boundaries': function(){
+	//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+		var re = /\b/g;
+		var strings = [
+			'',    // no match
+			'a', // between start of string and 'a', between and of string and 'a'
+			'@',
+			'aa',
+			'a!',
+			'a,a',
+		]
+		strings.forEach(str=>{
+			var res = str.match(re);
+			res && console.log(`${res.length} matches in '${str}':`)
+		});
+	//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+	},
+	'boundaries2': function(){
+	//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+		var re = /\b[\w-]+\b/gi;
+		var strings = [
+			'one two three four, five, six. Seven!',
+			'one-two,three!',
+		]
+		strings.forEach(str=>{
+			var res = str.match(re);
+			res && console.log(`${res.length} matches in '${str}'`)
+		});
+		// 7 matches in 'one two three four, five, six. Seven!'
+		// 2 matches in 'one-two,three!'
+	//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+	},
+	'alternation': function(){
+	//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+		var re = /\b(straw|rasp)?berries/;
+		var strings = [
+			'Icecream with strawberries? Yes!',
+			'Icecream with blueberries? No!',
+			'Icecream with raspberries? Yes!',
+			'Icecream with berries? Yes!',
+		]
+
+		strings.forEach(str=> str.match(re) ?
+			console.log(`${str} YES! YES!`) : console.log(`${str} NO! NO!`)
+		)
+		// Icecream with strawberries? Yes! YES! YES!
+		// Icecream with blueberries? No! NO! NO!
+		// Icecream with raspberries? Yes! YES! YES!
+		// Icecream with berries? Yes! YES! YES!
+	//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+	},
+	'grouping': function(){
+	//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+		var re = /\b(?:straw|rasp)?berries/;
+		var strings = [
+			'Icecream with strawberries?',
+			'Icecream with blueberries?',
+			'Icecream with raspberries?',
+			'Icecream with strawraspberries?',
+			'Icecream with berries?',
+		];
+		strings.forEach(str=>str.match(re) ?
+			console.log(`${str} YES!`) : console.log(`${str} NO!`)
+		);
+	//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+	},
+	'groupingVSnogrouping': function(){
+	//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+		var regexes = [
+			/\bstraw|rasp{1}berries/,
+			/(?:\bstraw)|(?:rasp{1}berries)/, //the same as above!!!
+			/\b(?:straw|rasp){1}berries/,   // different!!!
+		];
+		var strings = [
+			'Icecream with strawberries?',
+			'Icecream with raspberries?',
+			'Icecream with straw?',
+			'Icecream with whateverraspberries?',
+		];
+
+		regexes.forEach(re=>{
+			console.log(`\nMatched with: ${re}`);
+			strings.forEach(str=>str.match(re) ?
+				console.log(`${str} YES!`) : console.log(`${str} NO!`)
+			)
+		});
+		// Matched with: /\bstraw|rasp{1}berries/
+		// Icecream with strawberries? YES!
+		// Icecream with raspberries? YES!
+		// Icecream with straw? YES!
+		// Icecream with whateverraspberries? YES!
+
+		// Matched with: /(?:\bstraw)|(?:rasp{1}berries)/
+		// Icecream with strawberries? YES!
+		// Icecream with raspberries? YES!
+		// Icecream with straw? YES!
+		// Icecream with whateverraspberries? YES!
+
+		// Matched with: /\b(?:straw|rasp){1}berries/
+		// Icecream with strawberries? YES!
+		// Icecream with raspberries? YES!
+		// Icecream with straw? NO!
+		// Icecream with whateverraspberries? NO!
+	//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+	},
+	'constructRegex': function(){
+	//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+		var words = ["ябълка", "роза", "ягода", "ясен"];
+
+		// by RegExp literals:
+		var re1 = /^я.*а$/i;
+
+		// by RegExp Constructor
+		var re2 = new RegExp('^я.*а$','i');
+
+		console.dir(re1);
+		console.dir(re2);
+
+		words.forEach(word=>{
+			let matched = word.match(re1);
+			matched && console.log(matched[0]);
+		});
+	//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+	},
+	'regexLiteral': function(){
+	//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+		var str = 'Maria, ivan, eli, zdravka, stoyan';
+
+		// match the first word which ends on 'a':
+		var re1 = /\b\w+a\b/;
+
+		// match all words which end on 'a':
+		var re2 = /\b\w+a\b/g;
+
+		console.log( str.match(re1).toString() ); // Maria
+		console.log( str.match(re2).toString() ); // Maria,zdravka
+	//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+	},
+	'RegExpConstructor': function(){
+	//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+		var str = 'Maria, ivan, eli, zdravka, stoyan';
+
+		// match the first word which ends on 'a':
+		var re1 = new RegExp('\\b\\w+a\\b');
+
+		// match all words which end on 'a':
+		var re2 = new RegExp('\\b\\w+a\\b', 'g');
+
+		console.log( str.match(re1).toString() ); // Maria
+		console.log( str.match(re2).toString() ); // Maria,zdravka
+	//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+	},
+	'regexInLoops': function(){
+	//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+		var words = ["ябълка", "ария", "ягода", "ясен"];
+
+		// Match string starting with 'я' and ending with 'а':
+		//  RegExp literals:
+		var re1 = /^я.*а$/i;
+
+		// RegExp Constructor
+		var re2 = new RegExp('^я.*а$','i');
+
+		words.forEach(word=>{
+			// re1 is compiled only once !!!:
+			let re1Matched = word.match(re1);
+			re1Matched && console.log('re1: ' + re1Matched);
+		});
+
+		words.forEach(word=>{
+			// re2 is re-compiled in each iteration:
+			let re2Matched = word.match(re2);
+			re2Matched && console.log('re2: ' + re2Matched);
+		})
+	//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+	},
+	'arrayOfRegExp': function(){
+	//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+		var commentsREs = [/\/\/.*/gm, /\/\*[^]+?\*\//g];
+		var str = `
+			// single line comment 1
+			var x = 5;
+			// single line comment 2
+			var y = 10;
+			/*this is multiline
+			comment in JS */
+			const pi = 3.14;
+			for (let i = 0; i< x; i++) console.log(i);
+		`;
+		commentsREs.forEach( re=>{
+			var matched = str.match(re);
+			matched && matched.forEach(m=>
+				console.log(m.toString())
+			);
+		});
+	//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+	},
+	'RegExInVariable':function(){
+	//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+		var str = `The RegExp constructor creates a regular expression object for matching text with a pattern.
+			For an introduction to regular expressions, read the Regular Expressions chapter in the JavaScript Guide`;
+		// this regexp can be user input or coming form elsewhare,
+		// but it's just a string:
+		var searchTerm  =  'reg(?:ular)?\\s*exp?(?:ression)?';
+
+		// we can convert string to regex only byRegExp Constructor
+		var re = new RegExp('('+searchTerm+')', 'gi');
+		// console.dir(re);
+
+		str.match(re).forEach(m=>console.log(m));
+		// RegExp
+		// regular expression
+		// regular expression
+		// Regular Expression
+	//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+	},
+};
+
+	examples.RegExInVariable();
+	</script>
+	</body>
+	</html>

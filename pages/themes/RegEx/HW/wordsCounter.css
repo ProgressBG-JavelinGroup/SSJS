@@ -1,0 +1,94 @@
+html, body{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+main{
+	width: 80%;
+	height: 100%;
+	margin: 0 auto;
+}
+#wordsCounter{
+	display: block;
+	width: 100%;
+	height: 40vh;
+	/*border: .1em solid #CC9999;*/
+	box-sizing: border-box;
+}
+#wordsCounter h2{
+	text-align: center;
+	height: 2em;
+}
+#wordsCounter  textarea{
+	width: 100%;
+	height: 15em;
+	/*border: .1em solid #9999CC;*/
+	overflow: auto;
+	box-sizing: border-box;
+}
+.controls{
+	width: 100%;
+	margin: .5em 0 1em 0;
+	text-align: center;
+	height: 2em;
+}
+.controls select{
+	height: 100%;
+}
+.controls button{
+	width: 5em;
+	height: 100%;
+}
+
+/*common classes*/
+option:nth-of-type(1):disabled {
+    display: none;
+}
+
+/*results block:*/
+#results{
+	display: none;
+	width: 100%;
+	box-sizing: border-box;
+}
+#results h2{
+	text-align: center;
+	height: 2em;
+}
+/*#results table{
+	padding: 0 0 0 1em;
+	width: 80%;
+	height: 20em;
+	overflow: auto;
+	margin: 0 auto;
+}*/
+#results .output{
+	border: .01em solid #995599;
+}
+/*rows:*/
+#results div.row{
+	width: 100%;
+	padding:  .5em 0;
+}
+#results div.row:nth-of-type(2n){
+	background: #CCC;
+}
+#results div.row:nth-of-type(2n+1){
+	background: #EEE;
+}
+#results .title{
+	font-weight: bold;
+	border-bottom: .1em dotted #999;
+}
+/*cells*/
+#results div.row div{
+	display: inline-block;
+	width: 50%;
+	padding: 0 0 0 .5em;
+	box-sizing: border-box;
+}
+#results div.row div:nth-of-type(1){
+}
+#results div.row div:nth-of-type(2){
+
+}

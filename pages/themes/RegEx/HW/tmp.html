@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	var matcher = {
+		wordPattern : /\b[a-z]{3,}?\b/g,
+		text  : "",
+		matched : {},
+
+		matchWords: function(){
+			console.log(`matchWords() started`);
+			console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`);
+			console.log(`text: ${this.text}`);
+			console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`);
+
+			// matched = text.match(wordPattern);
+		},
+		init: function(text){
+			console.log(`init() started`);
+			console.log(`text in init: --->${text}<---`);
+			console.log(`matcher.text: --->${this.text}<---`);
+			this.text = text;
+
+		}
+	}
+
+	matcher.init("one two two");
+	matcher.matchWords();
+
+
+</script>
+</body>
+</html>

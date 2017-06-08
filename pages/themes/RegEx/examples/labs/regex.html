@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>4 ways to invoke a function</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	var examples = {
+		'matchWord': function(){
+		//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+		var mails = [
+		'progr-essbg.www.courses+12@gmail.com',
+		'progressbg.www.courses@gmail.com 45645645',
+		'progr ss@gmail.com',
+		];
+
+		var re = /^[\w-]+$/;
+		mails.forEach((mail)=>{
+			mail.match(re) &&
+			console.log(mail.match(re).toString());
+		})
+
+			var newText = text.replace(re, 'XXXXXX');
+			console.log(newText);
+		//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+		},
+		'split': function(){
+		//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+			var url = `https://google.bg/s=?a=10`;
+			// TODO: SyntaxError: Invalid regular
+			new RegExp('https?://\w+\.bg/.*?\?[a-z]+=(.+)');
+
+			console.log(url);
+			console.log( url.match(re) );
+		//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+		},
+		'modifiers': function(){
+		//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+			//TODO : multiline explain - THIS DOES not match
+			var str=`1. sjdfjdsfhdsjds_abc
+			2. kjdfkfdjgkfdkaBc
+			`;
+			var re=/^\d.+abc$/ig;
+
+			console.log(str);
+			console.log(`~~~~~~~~~~~~~~~~~~~~~~`);
+			console.log(str.match(re).toString());
+		//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+		},
+		'test': function(){
+		//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+			var str = `\\`;
+
+			// TODO: '\' and ther special characters in character sets:
+			var re = /[\\]+/;
+
+			console.log(str);
+			console.log(`~~~~~~~~~~~~~~~~`);
+			str.match(re).forEach(x=>console.log(x));
+		//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+		},
+		'example1Solution': function(){
+		//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+			let textCyrillic = `Едва ли е съвпадение, че никой език на Земята никога не е родил израза „красив като летище“`;
+			let textLatin = `It can hardly be a coincidence that no language on earth has ever produced the expression "As pretty as an airport.`;
+
+			// "Дума" за нас е последователност от поне 3 букви, оградена от гранични символи (\b). T.e. символи, който не са в множеството [A-Za-z0-9_]
+			var wordPattern = /\b[a-z]{3,}?\b/g;
+
+			console.log(`~~~matching textLatin~~~`);
+			if (textLatin.match(wordPattern)){
+				textLatin.match(wordPattern)
+					.forEach(word=>console.log(word));
+			}else{
+				console.log(`Sorry, no match!`);
+			}
+
+			console.log(`~~~matching textCyrillic~~~`);
+			if (textCyrillic.match(wordPattern)){
+				textCyrillic.match(wordPattern)
+					.forEach(word=>console.log(word));
+			}else{
+				console.log(`Sorry, no match! "Character classes" in JavaScript are defined only for ASCII symbols (i.e. latin alphabet)!!! `);
+			}
+		//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+		},
+		'matchDates': function(){
+		//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+			var dates = [
+				// 'dd.mm.yyyyy'
+				'01.01.1900',   // yes
+				'00.01.1900',   // no
+				'20.01.1900',  // no
+				'12.01.1900',  // yes
+				'12.13.1900',  // no
+				'3',  // yes
+			]
+
+			dates.forEach(date=>{
+				console.log(`date: ${date}`);
+				var re = /^(?:0[1-9]|1[0-9]|[1-9])\.(?:0[1-9]|1[0-2]|[1-9])\.\d{4}$/;
+				var res = date.match(re);
+				res && console.log(res);
+
+
+			})
+			// console.log(str);
+			// console.log(`~~~~~~~~~~~~~~~~`);
+			// str.match(re).forEach(x=>console.log(x));
+		//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+		},
+		'matchStrings': function(){
+		//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+			var strings = [
+				`'He says \'hi\'!'`, //ok
+				`'He says \'hi\"!'`, //no
+				`'He says \"hi\"!'`, //ok
+				`'He says \\hi!'`, //ok
+				`'Hi "mom'`, //yes
+				`'Hi \\"mom'`, //no
+			];
+			var re = /^(['"]).*?(?=\\)['"\\]\1$/;
+
+			strings.forEach(string=>{
+				console.log(`string: ${string}`);
+				var res = string.match(re);
+				res && console.log(res);
+
+
+			})
+			// console.log(str);
+			// console.log(`~~~~~~~~~~~~~~~~`);
+			// str.match(re).forEach(x=>console.log(x));
+		//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+		},
+	}
+
+	examples.matchStrings();
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>rollbar</title>
+    <script type="text/javascript" src="rollbar.js"></script>
+</head>
+<body>
+<a href="https://rollbar.com/progressbg.www.courses/test/">rollbar.com stats</a>
+<div class="test"></div>
+</body>
+<script type="text/javascript">
+	var testNode = document.getElementById('test');
+
+	try{
+		testNode.style.border = "5px solid red";
+	}catch(e){
+		Rollbar.error("Error: stack", e.stack);
+	}
+
+	'use strict';
+
+	// ES6 way
+	class DivideByZero extends Error {
+	  constructor(msg) {
+	    super(msg);
+	    this.name = 'DivideByZero Error';
+	  }
+	}
+
+	function divide(x, y){
+		try{
+			if( y === 0 ){
+				throw( new DivideByZero("Critical ERROR") );
+			}else{
+				return x/y;
+			}
+		}catch(e){
+			Rollbar.error(e);
+			return undefined; // or whatever we want
+		}
+	}
+
+	console.log( `5/0= ${divide(5, 0)}` );
+
+</script>
+</html>

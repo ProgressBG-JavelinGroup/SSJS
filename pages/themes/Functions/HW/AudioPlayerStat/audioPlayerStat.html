@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>t3</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+		.player{
+			width: 10em;
+			padding: 1em;
+		}
+		.songs, .songs>li{
+			margin: 0;
+			padding: 0;
+			list-style-type: none;
+		}
+		.songs>li:before{
+			content: '\f04b';
+			font: 0.8em FontAwesome;
+			color: hsla(179, 50%, 50%, .5);
+			margin: 0 .5em 0 0;
+		}
+		.songs>li:hover{
+			cursor: pointer;
+			color: hsla(179, 70%, 50%, .5);
+		}
+		.songs>li:hover:before{
+
+			color: hsla(179, 100%, 50%, .5);
+		}
+		.status{
+			margin: 1em 0 0 0;
+			font-style: italic;
+		}
+		.status > span{
+			font-size: 1.2em;
+			font-weight: bold;
+			color: hsla(179, 100%, 50%, .5);
+		}
+	</style>
+</head>
+<body>
+	<div class="player">
+		<ul class="songs">
+		</ul>
+		<audio controls>
+			<source src="ftp://files.bnr.bg/HristoBotev/Klasicheska/160309 contempo Dobrinka.mp3" type="">
+			</audio>
+		</div>
+		<div class="status">Now listening to song <span> </span></div>
+	</body>
+	<script type="text/javascript">
+		var tracks = {
+			'kontrapunkt_reforma': 'ftp://files.bnr.bg/HristoBotev/Klasicheska/100922_kontrapunkt_reforma.mp3',
+			'contempo Dobrinka': 'ftp://files.bnr.bg/HristoBotev/Klasicheska/160309 contempo Dobrinka.mp3',
+			'160217_Zefira1': 'ftp://files.bnr.bg/HristoBotev/Klasicheska/160217_Zefira1.mp3',
+			'101117_Kontrapunkt_signal': 'ftp://files.bnr.bg/HristoBotev/Klasicheska/101117_Kontrapunkt_signal.mp3',
+		}
+
+		function makeTrackList(){
+			var songContainer = document.getElementsByClassName('songs')[0];
+			console.log("songContainer:", songContainer);
+
+			// create li for each track in tracks
+			for( var trackName in tracks){
+				var li = document.createElement('li');
+				li.innerHTML = trackName;
+				li.setAttribute('data-trackName', trackName);
+				li.setAttribute('data-url', tracks[trackName]);
+				songContainer.appendChild(li);
+
+			}
+		}
+		makeTrackList();
+
+		var statusNode = document.querySelector('.status > span');
+		var songItems = document.querySelectorAll('.songs>li');
+		var audioSource = document.querySelector('.player audio>source');
+		var audio = document.querySelector('.player audio');
+
+
+		for (var i = 0, len=songItems.length; i < len; i++) {
+			(function(i){
+				songItems[i].addEventListener('click', function(){
+					// set audio
+					audioSource.setAttribute('src', this.getAttribute('data-url'));
+					audio.load();
+					audio.play();
+					// console.log("audioSource:",audioSource );
+
+					// display status
+					console.log("this:", this.getAttribute('data-trackname'));
+
+					statusNode.innerHTML = this.getAttribute('data-trackname');
+					console.log("statusNode:", statusNode);
+					// console.log("i:", i);
+
+				});
+			})(i);
+		}
+
+</script>
+</html>

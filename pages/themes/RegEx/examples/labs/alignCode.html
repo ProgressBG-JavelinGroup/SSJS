@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>alignCode</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/tomorrow-night-eighties.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+    <style type="text/css">
+    	.codeBlock{
+    		width: 80%;
+    		margin: 0 0 0 1em;
+    		border: 1px dotted #333;
+    	}
+    	.codeBlock>pre{
+    		margin: 0;
+    	}
+    	.disclaimer{
+    		text-align: right;
+    	}
+    	.twoColTable{
+    		margin: .3em 0 0 0;
+    		border: 1px solid #999;
+    		border-collapse: collapse;
+    	}
+    	.twoColTable th, .twoColTable td{
+    		border: 1px solid #999;
+    		padding: .5em;
+
+    	}
+    </style>
+</head>
+<body>
+	<h1>Re-indent code blocks</h1>
+	<section>
+		<h2>Пример</h2>
+		<div class="codeBlock">
+			<pre><code>
+				function removeIndentByRegExp(inputStr, indentStr){
+					var indentRE = new RegExp( '^'+indentStr, 'gm');
+					// console.dir(indentRE);
+
+					return = inputStr.replace(indentRE, '' );
+				}
+				function removeIndentBySlplit(inputStr, indentStr){
+					var eol = '\n';
+					var lines = inputStr.split(eol);
+					var newStr = "";
+
+					lines.forEach((line)=>newStr += line.replace(indentStr, '')+eol);
+					return newStr;
+				}
+			</code></pre>
+		<p class="disclaimer">highlighted by <a href="https://highlightjs.org/">highlight.js</a></p>
+		</div>
+	</section>
+	<section>
+		<h2>Задача</h2>
+		<ol>
+			<li>Да се имплементира функция <code>stripStartEndEmptyLines(str)</code> , която премахва празните редове в началото и края на блока и връща резултатния низ.</li>
+			<li>Да се имплементира функция <code>HTMLescape(str)</code>, която замества всички срещания на специални HTML символи в блока чрез съответните им <a href="https://www.w3schools.com/html/html_entities.asp">HTML Character Entities</a>.  Символите, които искаме да се заместват и респективните им стойности са:
+			<table class="twoColTable">
+				<tr><th>HTML символ</th><th>Код</th></tr>
+				<tr><td>&lt;</td><td>&amp;#lt;</td></tr>
+				<tr><td>&gt;</td><td>&amp;#gt;</td></tr>
+				<tr><td>&amp;</td><td>&amp;#amp;</td></tr>
+			</table>
+			</li>
+		</ol>
+	</section>
+</body>
+<script type="text/javascript" >
+	function removeIndentByRegExp(inputStr, indentStr){
+ 		var indentRE = new RegExp( '^'+indentStr, 'gm');
+ 		// console.dir(indentRE);
+ 		var newStr = inputStr.replace(indentRE, '' );
+		return newStr;
+	}
+	function removeIndentBySlplit(inputStr, indentStr){
+ 		var eol = '\n';
+ 		var lines = inputStr.split(eol);
+
+ 		var newStr = "";
+ 		lines.forEach((line)=>newStr += line.replace(indentStr, '')+eol);
+		return newStr;
+ 	}
+
+ 	function stripStartEndEmptyLines(inputStr){
+ 		// премахваме празните редове в началото:
+	 	inputStr = inputStr.replace(/^\s*/, '');
+
+	 	// премахваме празните редове в края:
+	 	inputStr = inputStr.replace(/\s+$/, '');
+
+	 	return inputStr;
+	}
+
+
+	var contentNode = document.querySelector("pre>code");
+ 	var inputStr = contentNode.innerHTML; // връща без HTML коментарите
+ 	console.log(`--->${inputStr}<---`);
+
+ 	// взимаме отместването на първия ред, като
+ 	// не трябва да "хващаме" предхождащите символи за нов ред
+ 	var matchАrr = inputStr.match(/^\n*(\s*)/);
+ 	console.dir(matchАrr);
+
+ 	// в matchАrr[1] имаме подниза, който отговаря на запаметения в скобите regex. Тоест - отместването на първия ред:
+ 	var indentStr  = matchАrr[1];
+ 	// console.log(`indent: --->${indentStr}<---`);
+
+
+ 	// премахваме indentStr от началото на всеки ред:
+ 	// Може да бъде с регулярен израз:
+ 	contentNode.innerHTML = removeIndentByRegExp(inputStr, indentStr);
+
+ 	// или чрез сплитване на съдържанието  ред по ред:
+ 	// contentNode.innerHTML = removeIndentBySlplit(inputStr, indentStr);
+</script>
+</html>

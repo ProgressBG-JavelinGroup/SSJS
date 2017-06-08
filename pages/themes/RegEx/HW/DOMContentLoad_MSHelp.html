@@ -1,0 +1,47 @@
+	<!doctype html>
+	<html>
+	<head>
+		<script type="text/javascript">
+
+			function logMsg( sMsg ) {
+				var oLog = document.getElementById('ResultLog');
+				oLog.innerText += "\n" + sMsg;
+			}
+
+			function addListener(obj, eventName, listener) {
+				if( obj.addEventListener ) {
+					obj.addEventListener( eventName, listener, false );
+				} else {
+					obj.attachEvent("on" + eventName, listener);
+				}
+			}
+
+			function handleDCL( e ) {
+				logMsg( "DOMContentLoaded event fired.\n" );
+				var o = document.getElementById('button1');
+				addListener(o, "click", handleClick1);
+			}
+
+			function handleClick1( e ) {
+				logMsg( "Button 1 clicked.\n" );
+			}
+
+
+			if(!window.addEventListener) {
+				logMsg( "Can't add eventListeners; not supported." )
+			} else {
+				addListener(document, "DOMContentLoaded", handleDCL);
+				addListener(window, "load", handleLoad);
+			}
+		</script>
+
+	</head>
+	<body>
+
+		<button id="button1">Click me</button>
+
+		<div>
+			<p id="ResultLog">Results appear here </p>
+		</div>
+	</body>
+	</html>

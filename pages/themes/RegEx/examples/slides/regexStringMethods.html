@@ -1,0 +1,65 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>RegExStringMethods</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+var examples = {
+	'match': function(){
+	//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+		var str = 'userName@domain.tld';
+
+		// var resultSimple = str.match(//);
+		// console.dir(resultSimple);
+
+		var resultGlobal = str.match(/a(.*?)a/g);
+		console.dir(resultGlobal);
+		console.log(typeof resultGlobal);
+	//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+	},
+	'replaceSimple': function(){
+	//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+		function styleHyphenFormat(propertyName) {
+			function upperToHyphenLower(match, offset, string) {
+				console.log(`match: ${match}`);
+				console.log(`offset: ${offset}`);
+				console.log(`string: ${string}`);
+				return (offset ? '-' : '') + match.toLowerCase();
+			}
+			return propertyName.replace(/[A-Z]/g, upperToHyphenLower);
+		}
+
+		console.log(styleHyphenFormat('borderTop'));
+	//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+	},
+	'replaceRegExpObj': function(){
+	//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+		var str = `The RegExp constructor creates a regular expression object for matching text with a pattern.
+			For an introduction to regular expressions, read the Regular Expressions chapter in the JavaScript Guide
+			here are 2 ways to create a RegExp object: a literal notation and a constructor. To indicate strings, the parameters to the literal notation do not use quotation marks while the parameters to the constructor function do use quotation marks. So the following expressions create the same regular expression:
+		`;
+		var reStr  =  'reg(?:ular)?\\s+exp?(?:ression)?';
+		var re = new RegExp('('+reStr+')', 'gi');
+		var newStr = str.replace(re,'<b>$1</b>');
+		console.log(`newStr: ${newStr}`);
+
+	//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+	},
+	'test': function(){
+	//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+		var str = `It is a well known fact that those people who most want to rule people are, ipso facto, those least suited to do it. To summarize the summary: anyone who is capable of getting themselves made President should on no account be allowed to do the job;`
+		var re = /\b[\w]{9}\b/g;
+
+		var matchRes = str.match(re);
+		console.dir(matchRes);
+		console.dir(re);
+	//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+	},
+};
+
+	examples.replaceRegExpObj();
+	</script>
+	</body>
+	</html>

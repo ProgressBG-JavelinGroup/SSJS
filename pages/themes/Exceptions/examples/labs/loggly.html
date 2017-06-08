@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>loggly</title>
+    <script type="text/javascript" src="https://cloudfront.loggly.com/js/loggly.tracker-2.1.min.js" async></script>
+<script>
+    var _LTracker = _LTracker || [];
+    _LTracker.push({'logglyKey': '1c3c777e-9e99-4982-9dfb-e74de3e8c087',
+    'sendConsoleErrors' : true,
+    'tag' : 'loggly-jslogger'  });
+</script>
+</head>
+<body>
+<p><a href="https://progresswww.loggly.com" target="_blank">https://progresswww.loggly.com</a></p>
+</body>
+<script type="text/javascript">
+	'use strict';
+
+	// ES6 way
+	class DivideByZero extends Error {
+	  constructor(msg) {
+	    super(msg);
+	    this.name = 'DivideByZero Error';
+	  }
+	}
+
+	function divide(x, y){
+		try{
+			if( y === 0 ){
+				throw( new DivideByZero() );
+			}else{
+				return x/y;
+			}
+		}catch(e){
+			_LTracker.push( e.stack );
+			console.log( e.name );
+			console.log( e.stack );
+			return undefined; // or whatever we want
+		}
+	}
+
+	console.log( `5/0= ${divide(5, 0)}` );
+</script>
+</html>
