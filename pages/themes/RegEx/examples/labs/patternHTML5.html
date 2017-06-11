@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>patternHTML5</title>
+</head>
+<body>
+	<form>
+		<label>tel: <input type="tel" name="tel"></label>
+		<button type="submit">OK</button>
+	</form>
+</body>
+<script type="text/javascript">
+	// Next URLs are given:
+	var str = `
+	http://google.com/alabala
+	https://abv.bg/alabala1
+	http://google.com/alabala
+	https://abv.com/alabala2
+	https://google.com/alabala
+	http://abv.com/alabala
+	`;
+
+	// for each URL on https, with TLD=='com', capture and return the 'domain-path' string.
+	// http://google.com/alabala     // no match (no https)
+	// https://abv.bg/alabala1		 // no match (TLD != com)
+	// http://google.com/alabala	 // no match (no https)
+	// https://abv.com/alabala2   	 // abv-alabala2
+	// https://google.com/alabala    // google-alabala
+	// http://abv.com/alabala        // no match (no https)
+
+
+
+
+	var re = /\b.+\b/m;
+	console.log(str.match(re));
+
+
+</script>
+</html>

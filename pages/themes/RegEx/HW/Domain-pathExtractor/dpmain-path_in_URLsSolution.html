@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>patternHTML5</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	// Next URLs are given:
+	var URLs = `
+		http://google.com/alabala
+		https://abv.bg/apples
+		http://google.com/alabala
+		https://abv.com/bananas
+		dhttps://google.com/alabala
+		http://abv.com/alabala
+	`;
+	var re=/^\s+https:\/\/(\w+)\.\w{2,5}\/(.+)$/gm;
+	var regexMatches;
+	while(( regexMatches=re.exec(URLs) )){
+		console.log(`${regexMatches[0]}=>${regexMatches[1]}-${regexMatches[2]}`);
+	}
+
+</script>
+</html>

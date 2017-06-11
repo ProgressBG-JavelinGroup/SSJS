@@ -130,8 +130,8 @@
 		</code></pre>
 		<dl class="fa">
 			<dt>The regex <code>/^a/</code> matches each string starting with 'a'</dt>
-		    	<dd>the <code>a</code> is a regular symbol</dd>
-		    	<dd>the <code>^</code> is a special symbol</dd>
+				<dd>the <code>a</code> is a regular symbol</dd>
+				<dd>the <code>^</code> is a special symbol</dd>
 		</dl>
 	</section>
 </section>
@@ -175,10 +175,10 @@
 
 	<section><h3>Character Sets</h3>
 		<dl class="fa">
-		    <dt>The square brackets are used to define a character set. Like: <code><b>[</b>abc<b>]</b></code>.</dt>
-		    <dt>Symbols inside brackets are the elements of set.</dt>
-		    <dt>The hyphen (<code>-</code>), when it is between 2 symbols, has special meaning inside the character class  - it defines a range. Like: <code>[0-9]</code>. If it is in the end, it is considered as a hyphen.</dt>
-		    <dt>The character set itself match only one symbol - one which is defined in set.</dt>
+			<dt>The square brackets are used to define a character set. Like: <code><b>[</b>abc<b>]</b></code>.</dt>
+			<dt>Symbols inside brackets are the elements of set.</dt>
+			<dt>The hyphen (<code>-</code>), when it is between 2 symbols, has special meaning inside the character class  - it defines a range. Like: <code>[0-9]</code>. If it is in the end, it is considered as a hyphen.</dt>
+			<dt>The character set itself match only one symbol - one which is defined in set.</dt>
 		</dl>
 	</section>
 	<section><h3>Character Sets</h3>
@@ -213,7 +213,7 @@
 
 	<section><h3>Character classes</h3>
 		<dl class="fa">
-		    <dt>Character classes can be regarded as shorthands for some of the most used  character sets. They work only on <span class="note"><a href="https://en.wikipedia.org/wiki/ASCII">ASCII</a></span> symbols.</dt>
+			<dt>Character classes can be regarded as shorthands for some of the most used  character sets. They work only on <span class="note"><a href="https://en.wikipedia.org/wiki/ASCII">ASCII</a></span> symbols.</dt>
 		</dl>
 	</section>
 	<section><h3>Character classes</h3>
@@ -259,14 +259,14 @@
 			<tr><td><i>r</i> <b class="note">+</b></td><td><i>r</i> match <b>1</b> or <b>more times</b></td></tr>
 			<tr><td><i>r</i> <b class="note">?</b></td><td><i>r</i> match <b>0</b> or <b>1</b>time</td></tr>
 			<tr><td><i>r</i> <b class="note">{n}</b></td><td><i>r</i> match <b>exactly <i>n</i> times</b></td></tr>
-			<tr><td><i>r</i> <b class="note">x{n,m}</b></td><td><i>r</i> match between <b>n</b> and <b>m</b> times (n, m are positive)</td></tr>
+			<tr><td><i>r</i> <b class="note">{n,m}</b></td><td><i>r</i> match between <b>n</b> and <b>m</b> times (n, m are positive)</td></tr>
 		</table>
 		<p class="note"><code>r</code> can be any regex!</p>
 	</section>
 	<section><h3>Quantifiers (greedy and non-greedy match)</h3>
 		<dl class="fa">
-		    	<dt>The quantifiers are <span class="note">greedy</span>, meaning they will match the maximum part of the string they can:</dt>
-		    	<pre><code rel="JS" class="js">
+				<dt>The quantifiers are <span class="note">greedy</span>, meaning they will match the maximum part of the string they can:</dt>
+				<pre><code rel="JS" class="js">
 				var matched, str = `ala bala`;
 
 				matched = str.match(/a.*a/);
@@ -541,8 +541,8 @@
 	</section>
 	<section><h3>RegEx Literal vs Constructor</h3>
 		<dl class="fa">
-		    	<dt>Literal:</dt>
-		    	<dd>Compiles only once - when <b>evaluated</b>.</dd>
+				<dt>Literal:</dt>
+				<dd>Compiles only once - when <b>evaluated</b>.</dd>
 			<dd class="note">Use literal notation when you know the regular expression in advance.</dd>
 			<dt>Constructor</dt>
 			<dd>Compiles dynamically,  i.e. <b>each time the regex obj is used</b>.</dd>
@@ -628,21 +628,21 @@
 			str.match(regexp)
 		</code></pre>
 		<dl class="fa">
-		    <dt>Argument:</dt>
-		    <dd>A RegExp object, or a string which will be converted to RegExp pbject</dd>
+			<dt>Argument:</dt>
+			<dd>A RegExp object, or a string which will be converted to RegExp pbject</dd>
 		</dl>
 	</section>
 	<section><h3>The match() String method: Return value</h3>
 		<dl class="fa">
-		    <dt>If no match is found, the method returns <code class="note">null</code>.</dt>
-		    <dt>Without <code>g</code> modifier, <code>match()</code> returns an Array like object with next properties</dt>
-		    <table style="font-size: .9em">
-		    	<tr><th>Property/index</th><th>Description</th></tr>
-		    	<tr><td><code class="note">[0]</code></td><td>The part of the string that mathched the Regex</td></tr>
-		    	<tr><td><code class="note">[1]..[n]</code></td><td>The captured groups matches, if any</td></tr>
-		    	<tr><td><code class="note">index</code></td><td>The string index, where the match starts. Strings indexes are 0-based!</td></tr>
-		    	<tr><td><code class="note">input</code></td><td>The original string</td></tr>
-		    </table>
+			<dt>If no match is found, the method returns <code class="note">null</code>.</dt>
+			<dt>Without <code>g</code> modifier, <code>match()</code> returns an Array like object with next properties</dt>
+			<table style="font-size: .9em">
+				<tr><th>Property/index</th><th>Description</th></tr>
+				<tr><td><code class="note">[0]</code></td><td>The part of the string that mathched the Regex</td></tr>
+				<tr><td><code class="note">[1]..[n]</code></td><td>The captured groups matches, if any</td></tr>
+				<tr><td><code class="note">index</code></td><td>The string index, where the match starts. Strings indexes are 0-based!</td></tr>
+				<tr><td><code class="note">input</code></td><td>The original string</td></tr>
+			</table>
 		</dl>
 	</section>
 	<section><h3>The match() String method: Return value</h3>
@@ -661,14 +661,45 @@
 			console.dir(resultGlobal);
 		</code></pre>
 	</section>
-	<section><h3>The replace() String method</h3></section>
-	<section><h3>The search() String method</h3></section>
-	<section><h3>The split() String method</h3></section>
+	<section><h3>The replace() String method</h3>
+		<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace">String.prototype.replace() - JavaScript | MDN</a>
+	</section>
+	<section><h3>The search() String method</h3>
+		<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/search">String.prototype.search() - JavaScript | MDN</a>
+	</section>
+	<section><h3>The split() String method</h3>
+		<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split">String.prototype.split() - JavaScript | MDN</a>
+	</section>
 	<section><h3>by <code>RegExp</code> object methods</h3>
 		<dl class="fa">
 			<dt><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec">exec()</a></dt><dt><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test">test()</a></dt>
 		</dl>
-
+	</section>
+</section>
+<section><h2>Tasks</h2>
+	<section><h3>Domain-path extractor-task</h3>
+		<p>for each URL with HTTPS protocol and TLD=='com', capture and return the 'domain-path' string</p>
+		<pre><code rel="JS" class="js">
+			var URLs = `
+				http://google.com/apples
+				https://abv.bg/apples
+				http://google.com/bananas
+				https://abv.com/apples
+				https://google.com/bananas
+				dhttps://abv.com/apples
+			`;
+		</code></pre>
+	</section>
+	<section><h3>Domain-path extractor-output</h3>
+		<p>The expected output (with explanations in brackets) is given bellow. You do not have to print out the explanations!</p>
+		<pre><code rel="console" class="ascii">
+			http://domain1.com/apples   => no match (no https)
+			https://domain2.bg/apples   => no match (TLD != com)
+			http://domain3.com/bananas  => no match (no https)
+			https://domain4.com/apples  => abv-apples (we have match)
+			https://domain5.com/bananas => google-bananas (we have match)
+			dhttps://domain6.com/apples => no match (not a valid URL)
+		</code></pre>
 	</section>
 </section>
 
@@ -715,7 +746,7 @@
 			history: true,
 			center: true,
 			// width: '100%',
-			height: '100%',
+			// height: '100%',
 			// slide transition
 			transition: 'concave', // none/fade/slide/convex/concave/zoom
 			// Factor of the display size that should remain empty around the content

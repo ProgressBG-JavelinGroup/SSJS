@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>patternHTML5</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	// for each URL with HTTPS protocol and TLD=='com', capture and return the 'domain-path' string.
+	var str = `
+		http://google.com/apples
+		https://abv.bg/apples
+		http://google.com/bananas
+		https://abv.com/apples
+		https://google.com/bananas
+		dhttps://abv.com/apples
+	`;
+
+	// The respective output is given bellow:
+	// http://google.com/apples    // no match (no https)
+	// https://abv.bg/apples	   // no match (TLD != com)
+	// http://google.com/bananas   // no match (no https)
+	// https://abv.com/apples      // abv-apples
+	// https://google.com/bananas  // google-bananas
+	// dhttps://abv.com/apples     // no match (not a valid URL)
+</script>
+</html>
