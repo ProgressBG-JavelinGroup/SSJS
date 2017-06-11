@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>slidesExamples</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	var singelton = {
+		'cachingTheSingularInstance': function(){
+		//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+			function Car(name, speed) {
+				// check for existing instance
+				if (typeof Car.instance === "object"){
+					return Car.instance;
+				}
+
+				// set instance properties
+				this.name = name || 'Car';
+				this.speed = speed || 180;
+
+				// cache the instance
+				Car.instance = this;
+			}
+
+			// lets try to create 2 instances
+			var car1 = new Car('car1', 200);
+			var car2 = new Car('car2', 300);
+
+			// test if we have ONLY ONE instance:
+			console.log(car1 === car2);
+		//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+		},
+		'instanceInAClosure': function(){
+		//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+			function Car(name, speed) {
+				// cache the instance
+				var instance = this;
+
+				// set instance properties
+				this.name = name || 'Car';
+				this.speed = speed || 180;
+
+				// rewrite the constructor
+				Car = function(){
+					return instance;
+				};
+			}
+
+			// lets try to create 2 instances
+			var car1 = new Car('car1', 200);
+			var car2 = new Car('car2', 300);
+
+			// test if we have ONLY ONE instance:
+			console.log(car1 === car2);
+		//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+		},
+	};
+
+	var builder = {
+		'tournament': function(){
+		//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+			var Event = (function () {
+				function Event(name) {
+					this.name = name;
+				}
+				return Event;
+			})();
+			var Westeros = {};
+
+			Westeros.Event = Event;
+			var Prize = (function () {
+				function Prize(name) {
+					this.name = name;
+				}
+				return Prize;
+			})();
+			Westeros.Prize = Prize;
+			var Attendee = (function () {
+				function Attendee(name) {
+					this.name = name;
+				}
+				return Attendee;
+			})();
+			Westeros.Attendee = Attendee;
+		//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+		},
+		'veical': function(){
+		//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+			function veical
+		//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+		},
+	}
+
+	var abstractFactory = {
+		'tournament': function(){
+		//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+
+		//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+		},
+	}
+
+	builder.carBuilder();
+</script>
+</body>
+</html>
