@@ -1,0 +1,10 @@
+.registration input[pattern]{
+	border: .5em solid #666;
+}
+
+.registration input[pattern]:valid{
+	border-color: green;
+}
+.registration input[pattern]:invalid{
+	border-color: red;
+}
