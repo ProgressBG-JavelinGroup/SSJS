@@ -44,6 +44,7 @@
 ##################### SLIDES START #####################
 ########################################################
 -->
+<section><h1>Creational Patterns</h1></section>
 <section data-transition="zoom">
 	<section>
 		<div class="copyright">
@@ -71,7 +72,7 @@
 </section>
 
 
-<section><h1>Creational Patterns</h1>
+<section><h2>about</h2>
 	<dl class="fa">
 		<dt>Creational design patterns focus on object creation mechanisms</dt>
 		<dt>Summaries best practices for object creation suitable for different, common, situations</dt>
@@ -79,7 +80,8 @@
 		<dt>Some of the patterns that fall under this category are: Factory, Abstract, Prototype, Singleton and Builder</dt>
 	</dl>
 </section>
-<section><h2>The Factory Pattern</h2>
+
+<section data-notes="2h"><h2>The Factory Pattern</h2>
 	<section><h3>The Factory Pattern</h3>
 		<dl class="fa">
 			<dt>"Factory" - a function which creates object instances! </dt>
@@ -194,6 +196,21 @@
 			<dt>used to organize the code in a consistent manner,</dt>
 		</dl>
 	</section>
+	<section><h3>object literal</h3>
+		<dl class="fa">
+			<dt>An object literal can be regarded as the simplest form of  Singelton</dt>
+		</dl>
+		<pre><code rel="JS" class="js">
+			var mySingleton={
+				property1:"something",
+				property2:"something else",
+
+				method1:function(){
+					console.log('hello world');
+				}
+			};
+		</code></pre>
+	</section>
 	<section><h3>caching the singular instance</h3>
 		<pre><code rel="JS" class="js">
 			function Car(name, speed) {
@@ -217,6 +234,11 @@
 			// test if we have ONLY ONE instance:
 			console.log(car1 === car2);
 		</code></pre>
+	</section>
+	<section><h3><span class="note">Exercise </span>: caching the singular instance in Factory</h3>
+		<dl class="fa">
+			<dt>Implement a Singleton <code>carMaker</code> object Factory, following the "caching the singular instance" approach.</dt>
+		</dl>
 	</section>
 	<section><h3>Instance in a Closure: rewrite the Constructor</h3>
 		<pre><code rel="JS" class="js">
@@ -242,6 +264,83 @@
 			console.log(car1 === car2);
 		</code></pre>
 	</section>
+	<section><h3><span class="note">Exercise </span>: rewrite the Factory</h3>
+		<dl class="fa">
+			<dt>Implement a Singleton <code>carMaker</code> object Factory, following the "rewrite the Constructor" approach.</dt>
+		</dl>
+	</section>
+</section>
+<section><h2>The Module Pattern</h2>
+	<section><h3>Modules in JavaScript</h3>
+		<dl class="fa">
+			<dt>Object literal notation</dt>
+			<dt>The Module pattern</dt>
+			<dt>AMD modules</dt>
+			<dt>CommonJS modules</dt>
+			<dt>ECMAScript Harmony modules</dt>
+		</dl>
+	</section>
+	<section><h3>Module as Object Literal</h3>
+		<pre><code rel="JS" class="js">
+			var myModule = {
+				config: {
+					encoding: 'UTF8',
+					maxLength: '2048'
+				},
+
+				log: function(value, msg){
+					msg?
+						console.log(`${msg}: ${value}\n\n`):
+						console.log(`${value}\n\n`);
+
+				}
+			}
+
+			var m = myModule;
+
+			for( conf in m.config){
+				m.log( m.config[conf], conf);
+			}
+		</code></pre>
+	</section>
+	<section><h3>Module Pattern</h3>
+		<dl class="fa">
+			<dt>The Module pattern encapsulates "privacy", state and organization using closures.</dt>
+			<dt>Provides a way of wrapping of public and private methods and variables</dt>
+			<dt>Only a public API is returned, keeping everything else within the closure private</dt>
+		</dl>
+	</section>
+	<section><h3>Example</h3>
+		<pre><code rel="JS" class="js">
+			var myModule = (function(){
+				// private
+				var config = {
+					encoding: 'UTF8',
+					maxLength: '2048'
+				};
+
+				var log = function(value, msg){
+					msg?
+						console.log(`${msg}: ${value}\n\n`):
+						console.log(`${value}\n\n`);
+
+				};
+
+				// API
+				var showConfig =  function(){
+					for( c in this.config ){
+						this.log(this.config[c], this.config)
+					}
+				}
+
+				return {
+					showConfig: showConfig
+				}
+			})();
+
+			myModule.showConfig();
+		</code></pre>
+	</section>
 </section>
 <section data-notes="2h"><h2>The Builder Pattern</h2>
 	<section><h3>about</h3>
@@ -261,6 +360,7 @@
 		</dl>
 	</section>
 </section>
+
 
 
 <section class="disclaimer" data-background="../../../outfit/images/for_slides/the_end_on_sand.jpg">

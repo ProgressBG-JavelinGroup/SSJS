@@ -58,6 +58,63 @@
 		},
 	};
 
+	var modules = {
+		'asLiteral': function(){
+		//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+			var myModule = {
+				config: {
+					encoding: 'UTF8',
+					maxLength: '2048'
+				},
+
+				log: function(value, msg){
+					msg?
+						console.log(`${msg}: ${value}\n\n`):
+						console.log(`${value}\n\n`);
+
+				}
+			}
+
+			var m = myModule;
+
+			for( conf in m.config){
+				m.log( m.config[conf], conf);
+			}
+		//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+		},
+		'theModulePattern': function(){
+		//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
+			var myModule = (function(){
+				// private
+				var config = {
+					encoding: 'UTF8',
+					maxLength: '2048'
+				};
+
+				var log = function(value, msg){
+					msg?
+						console.log(`${msg}: ${value}\n\n`):
+						console.log(`${value}\n\n`);
+
+				};
+
+				// API
+				var showConfig =  function(){
+					for( c in this.config ){
+						this.log(this.config[c], this.config)
+					}
+				}
+
+				return {
+					showConfig: showConfig
+				}
+			})();
+
+			myModule.showConfig();
+		//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
+		}
+	}
+
 	var builder = {
 		'tournament': function(){
 		//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
@@ -86,12 +143,7 @@
 			Westeros.Attendee = Attendee;
 		//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
 		},
-		'veical': function(){
-		//▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾▾//
-			function veical
-		//▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴▴//
-		},
-	}
+	};
 
 	var abstractFactory = {
 		'tournament': function(){
@@ -101,7 +153,7 @@
 		},
 	}
 
-	builder.carBuilder();
+	modules.asLiteral();
 </script>
 </body>
 </html>
