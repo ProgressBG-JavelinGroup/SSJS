@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>StructuralPatterns</title>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+	<!-- css & themes include -->
+	<link rel="stylesheet" href="../../../lib/reveal.js/css/reveal.css">
+	<link rel="stylesheet" href="../../../outfit/css/themes/projector.css" id="theme">
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? '../../../lib/reveal.js/css/print/pdf.css' : '../../../lib/reveal.js/css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+	<!-- CUSTOM -->
+	<base target="_blank">
+</head>
+<body>
+	<div class="reveal default center" data-transition-speed="default" data-background-transition="default">
+		<div class="top_links">
+			<a class="home_link" href="/index.html#Course_Intro" target="_top"><i class="fa fa-home"></i></a>
+			<span class="help_link" href="#"><i class="fa fa-question"></i></span>
+			<div class="help_text">
+				<div><span>N/Space</span><span>Next Slide</span></div>
+				<div><span>P</span><span>Previous Slide</span></div>
+				<div><span>O</span><span>Slides Overview</span></div>
+				<div><span>ctrl+left click</span><span>Zoom Element</span></div>
+			</div>
+		</div>
+		<div class="footer theme_switch">
+			<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../../outfit/css/themes/dark.css'); return false;">Dark</a>
+			<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../../outfit/css/themes/light.css'); return false;">Light</a>
+			<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../../outfit/css/themes/projector.css'); return false;">Projector</a>
+		</div>
+		<div class="slides">
+<!--
+########################################################
+##################### SLIDES START #####################
+########################################################
+-->
+<section><h1>Structural Patterns in JavaScript</h1></section>
+<section data-transition="zoom">
+	<section>
+		<div class="copyright">
+			<div class="note">
+				<p>Created for</p>
+			</div>
+			<div class="company">
+				<a href="http://www.javelingroup.com/">
+					<img src="../../../outfit/images/for_slides/JavelinLogo.png" alt="JavelinGroup" style="border-radius: 100%">
+				</a>
+			</div>
+		</div>
+	</section>
+	<section class="copyright" data-transition="zoom" style="margin-top: -2em;">
+		<div class="note">
+			<p>Created by</p>
+		</div>
+		<div class="company">
+			<div class="LI-profile-badge" data-version="v1" data-size="large" data-locale="en_US" data-type="vertical" data-theme="dark" data-vanity="ivapopova"><a class="LI-simple-link" href='https://bg.linkedin.com/in/ivapopova?trk=profile-badge'>Iva E. Popova</a></div>
+		</div>
+		<!-- <div class="author">
+			<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
+		</div> -->
+	</section>
+</section>
+
+
+<section><h2>Mixins</h2>
+	<section><h3>about</h3>
+		<dl class="fa">
+			<dt>Mixin Pattern represents a class that defines a set of functions relating to a type</dt>
+			<dt>Mixins classes are considered <span class="note">abstract</span>, as they will not themselves be instantiated</dt>
+			<dt>Mixins functions are intended to be copied (or borrowed ) from other object constructors</dt>
+		</dl>
+	</section>
+	<section><h3>example</h3>
+		<pre><code rel="JS" class="js">
+			// The Mixin - exports functionalities for vehicles
+			var Mixin = function (){};
+			Mixin.prototype = {
+			    drive(){console.log( "Driving" )},
+			    ride(){console.log( "Riding" )},
+			    stop(){console.log( "Stopping" )},
+			    purr(){console.log("Purr rrr rrpp prr ppprrrr")},
+			};
+
+			// some constructor, which can borrow methods from Mixin
+			var Bike = function ( settings ) {
+			    this.model = settings.model || "unknown";
+			};
+			var Car = function ( settings ) {
+			    this.model = settings.model || "unknown";
+			};
+
+			// helper function to extend an object by Mixin:
+			// augment( Constructor, Mixin, [methodsArray] );
+			function augment( receiver, giver, methodsArray ){
+					// with a list of specified methods:
+			    if ( methodsArray ){
+			        methodsArray.forEach(m => {
+			        	receiver.prototype[m] = giver.prototype[m];
+			        });
+			    }
+			    // with all methods
+			    else {
+			        for ( let methodName in giver.prototype ) {
+			            if ( !Object.hasOwnProperty.call(receiver.prototype, methodName) ) {
+			                receiver.prototype[methodName] = giver.prototype[methodName];
+			            }
+
+			            // augment by prototype chain:
+			            // if ( !receiver.prototype[methodName] ) {
+			            // receiver.prototype[methodName] = giver.prototype[methodName];
+			            // }
+			        }
+			    }
+			}
+
+			// Augment the Bike constructor with some of the Mixin methods:
+			augment( Bike, Mixin, ["ride", "purr"] );
+
+			// Augment the Car constructor with all of the Mixin methods:
+			augment( Car, Mixin );
+
+			// make some objects
+			var ford = new Car({ model: "Ford" });
+			console.dir(ford);
+
+			var harley = new Bike({ model: "Harley Davidson" });
+			console.dir(harley);
+		</code></pre>
+	</section>
+	<section><h3>and more...</h3>
+		<blockquote cite="https://medium.com/javascript-scene/functional-mixins-composing-software-ffb66d5e731c">Mixins are a form of object composition, where component features get mixed into a composite object so that properties of each mixin become properties of the composite object</blockquote>
+		<a href="https://medium.com/javascript-scene/functional-mixins-composing-software-ffb66d5e731c">Functional Mixins by Eric Elliott</a>
+	</section>
+</section>
+
+<section data-notes="20min"><h2>Decorator</h2>
+	<section><h3>about</h3>
+		<a href="images/decoratorIdea.png"><img src="images/decoratorIdea.png"></a>
+		<p class="note"><b>Dynamically</b> augments the behaviour of an existing object</p class="note">
+	</section>
+	<section><h3>How Decorator differs from Classical Inheritance?</h3>
+		<dl class="fa">
+			<dt>The behaviour is not added to the all of the objects from the same class.</dt>
+			<dt>We can add behaviour only to the object being decorated.</dt>
+		</dl>
+	</section>
+	<section><h3>Object decoration</h3>
+		<pre><code rel="JS" class="js">
+			function objectDecorate(component) {
+				//assign new method to component
+				component.greetings = () => {
+					console.log(`Howdy`);
+				};
+
+				return component;
+			}
+		</code></pre>
+	</section>
+	<section><h3>Prototype Object decoration</h3>
+		<pre><code rel="JS" class="js">
+			// The constructor to decorate
+			function Laptop() {
+			  this.price = function() { return 1000; };
+			  this.screenSize = function () { return 13; };
+			}
+
+			// Decorators
+			function memory( laptop ) {
+				let p = laptop.price();
+			  laptop.price = function() {
+			    return p + 75;
+			  };
+			}
+			function ssd( laptop ) {
+				let p = laptop.price();
+			  laptop.price = function() {
+			    return p + 125;
+			  };
+			}
+
+			// usage
+			var thinkPad = new Laptop();
+
+			memory( thinkPad );
+			ssd( thinkPad );
+
+			console.log( thinkPad.price() );
+
+		</code></pre>
+	</section>
+	<section><h3>Decorator by Composition</h3>
+		<pre><code rel="JS" class="js">
+			function compositDecorate(component) {
+				const protoComp = Object.getPrototypeOf(component);
+
+				function Decorator(component) {
+					this.component = component;
+				}
+				Decorator.prototype = Object.create(protoComp);
+
+
+				//new method
+				Decorator.prototype.greetings = function() {
+					return 'Good evening';
+				};
+				//delegated method
+				Decorator.prototype.hello = function() {
+					return this.component.hello.apply(this.component, arguments);
+				};
+			}
+		</code></pre>
+	</section>
+	<section><h3>Implementing decorators with jQuery</h3>
+		<pre><code rel="JS" class="js">
+			var decoratorApp = decoratorApp || {};
+
+			// define the objects we're going to use
+			decoratorApp = {
+		    defaults: {
+		    		bool:false,
+		        someDefaults: function(){
+		            console.log( "someDefaults actions" );
+		        }
+		    },
+		    options: {
+		        bool: true,
+		        optionsAction: function(){
+		            console.log( "optionsAction" );
+		        }
+		  	},
+		  	settings: {},
+
+		    printObj: function( obj ){
+		        var arr = [];
+		        var next;
+
+		        $.each( obj, function( key, val ){
+		            next = key + ": ";
+		            next += $.isPlainObject(val) ? printObj( val ) : val;
+		            arr.push( next );
+		        } );
+
+		        return "{ " + arr.join(", ") + " }";
+		    }
+			};
+
+			// merge defaults and options, without modifying defaults explicitly
+			decoratorApp.settings = $.extend({}, decoratorApp.defaults, decoratorApp.options);
+
+			$("#log")
+			    .append( decoratorApp.printObj(decoratorApp.settings) +
+			          + decoratorApp.printObj(decoratorApp.options) +
+			          + decoratorApp.printObj(decoratorApp.defaults));
+		</code></pre>
+		<p>from <a href="https://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript">Learning JavaScript Design Patterns: Decorators With jQuery</a></p>
+	</section>
+</section>
+
+<section><h2>Façade</h2>
+	<section><h3>about</h3>
+		<dl class="fa">
+			<dt>Provides alternative (often - simplified) interface to an object</dt>
+			<dt>Good for organizing short methods in to one when called together repeatedly</dt>
+			<dt>Suitable for browser scripting where the differences between the browsers can be hidden behind a façade</dt>
+		</dl>
+	</section>
+	<section><h3>basics</h3>
+		<pre><code rel="JS" class="js">
+			var method1 = function(){
+				console.log(`Method 1`);
+			}
+
+			var method2 = function(){
+				console.log(`Method 2`);
+			}
+
+			var methodWrapper = function(){
+				method1();
+				method2();
+			}
+		</code></pre>
+	</section>
+</section>
+
+<section><h2>Iterator</h2>
+	<section><h3>about</h3>
+		<dl class="fa">
+			<dt>Provides easy access to elements of complex data structure.</dt>
+			<dt>An "iteration interface" to complex data structure</dt>
+			<dt>Exports next() method available to the consumer of the structure</dt>
+			<dt>The module designer decides what the next() should be!</dt>
+		</dl>
+	</section>
+	<section><h3>about</h3>
+		<dl class="fa">
+			<dt>An object is an iterator when it knows how to access items from a collection one at a time, while keeping track of its current position within that sequence</dt>
+		</dl>
+	</section>
+	<section><h3>use cases</h3>
+		<pre><code rel="JS" class="js">
+			var element;
+			while (element = complexObject.next()) {
+				// do something with the element ...
+			}
+		</code></pre>
+		<p>if <code>hasNext()</code> method is defined:</p>
+		<pre><code rel="JS" class="js">
+			while (complexObject.hasNext()) {
+				// do something with the next element...
+			}
+		</code></pre>
+	</section>
+	<section><h3>implementation</h3>
+		<pre><code rel="JS" class="js">
+			function makeIterator(array) {
+			    var index = 0;
+
+			    return {
+			       next: function() {
+			           return index < array.length ?
+			               {value: array[index++], done: false} :
+			               {done: true};
+			       }
+			    };
+			};
+
+			var it = makeIterator([1,2,3,4,5]);
+			var element;
+			while( element = it.next().value){
+				console.log(`${element}`);
+			}
+		</code></pre>
+	</section>
+</section>
+
+<section class="disclaimer" data-background="../../../outfit/images/for_slides/the_end_on_sand.jpg">
+	 <p>These slides are based on</p>
+	 <p>customised version of </p>
+	 <p><a href="http://hakim.se/">Hakimel</a>'s <a href="http://lab.hakim.se/reveal-js">reveal.js</a></p>
+	 <p>framework</p>
+</section>
+<!--
+########################################################
+##################### SLIDES END   #####################
+########################################################
+-->
+		</div>
+	</div>
+	<!-- Custom processing -->
+	<script src="../../../outfit/js/slides.js"></script>
+	<!-- external scripts -->
+	<script src="../../../lib/reveal.js/lib/js/head.min.js"></script>
+	<script src="../../../lib/reveal.js/js/reveal.js"></script>
+
+	<!-- init reveal -->
+	<script>
+		// Full list of configuration options available at:
+		// https://github.com/hakimel/reveal.js#configuration
+		var highlightjsTabSize = '  ';
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			slideNumber: 'c/t',
+			keyboard: true,
+			history: true,
+
+			// display control
+			// center: true,
+			// width: '100%',
+			// height: '100%',
+			// // Factor of the display size that should remain empty around the content
+			// margin: 0.1,
+
+			// The "normal" size of the presentation, aspect ratio will be preserved
+			// when the presentation is scaled to fit different resolutions. Can be
+			// specified using percentage units.
+			width: 960,
+			height: 700,
+
+			// Factor of the display size that should remain empty around the content
+			margin: 0.1,
+
+			// Bounds for smallest/largest possible scale to apply to content
+			minScale: 0.2,
+			maxScale: 1.5,
+
+			// slide transition
+			transition: 'concave', // none/fade/slide/convex/concave/zoom
+			// shift+maous click to zoom in/out element
+			zoomKey: 'ctrl',
+			// theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+			// transition: Reveal.getQueryHash().transition || 'default'
+			// Optional reveal.js plugins
+			dependencies: [
+				{ src: '../../../lib/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				{ src: '../../../lib/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: '../../../lib/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: '../../../lib/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.configure({tabReplace: highlightjsTabSize}); hljs.initHighlightingOnLoad(); } },
+				{ src: '../../../lib/reveal.js/plugin/zoom-js/zoom.js', async: true },
+				{ src: '../../../lib/reveal.js/plugin/notes/notes.js', async: true }
+			]
+		});
+	</script>
+	<!-- linkedin badge -->
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</body>
+</html>
