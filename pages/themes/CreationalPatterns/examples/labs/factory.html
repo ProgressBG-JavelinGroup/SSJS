@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>factory</title>
+    <script type="text/javascript" src="logger.js"></script>
+</head>
+<body>
+
+</body>
+
+<script type="text/javascript">
+
+	var counter = 3;
+	var myModule = moduleMaker(counter);
+
+	console.dir(myModule); // {}
+
+	counter = 5;
+	myModule = moduleMaker(counter); // {prop: value, kjkkdsfkdsjs}
+
+
+
+</script>
+</html>
