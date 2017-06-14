@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>sortTableColumns</title>
+    <style type="text/css">
+    	.row>label{
+    		display: inline-block;
+    		width: 10em;
+    		margin: .5em;
+    	}
+    	.row>button{
+    		width: 13em;
+    		margin: 0 0 0 13em;
+    		height: 2em;
+    	}
+    	.users, .users>tr, .users>tr>td{
+    		border: 1px solid #999;
+    	}
+    </style>
+</head>
+<body>
+	<section>
+		<div class="row">
+			<label for="id">id:</label><input type="number" name="id">
+		</div>
+		<div class="row">
+			<label for="name">name: </label><input type="text" name="name">
+		</div>
+		<div class="row">
+			<label for="year">year: </label><input type="number" name="year">
+		</div>
+		<div class="row">
+			<button name="insert">Insert</button>
+		</div>
+	</section>
+	<section>
+		<table class="users">
+			<tr>
+				<th>id</th>
+				<th>name</th>
+				<th>year</th>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>ivan</td>
+				<td>1950</td>
+			</tr>
+		</table>
+	</section>
+
+
+
+</body>
+<script type="text/javascript" src="sortTableColumns.js"></script>
+</html>
