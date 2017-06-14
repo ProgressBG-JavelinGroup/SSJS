@@ -28,6 +28,8 @@ function augment( receiver, giver, methodsArray ){
     else {
         for ( let methodName in giver.prototype ) {
             if ( !Object.hasOwnProperty.call(receiver.prototype, methodName) ) {
+
+
                 receiver.prototype[methodName] = giver.prototype[methodName];
             }
         }

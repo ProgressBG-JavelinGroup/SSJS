@@ -30,7 +30,7 @@ var testSSIterator = function(){
 			next: function () {
 				var element;
 				if (!this.hasNext()) {
-				return null;
+					return null;
 				}
 				element = data[index];
 				index = index + 2;
@@ -47,5 +47,13 @@ var testSSIterator = function(){
 		console.log(agg.next());
 	}
 };
+
+var iterateOdd = function(){
+
+		iterateOdd([2,3,2,2,3]); //
+
+		// 3
+		// 3
+}
 
 testSSIterator();
