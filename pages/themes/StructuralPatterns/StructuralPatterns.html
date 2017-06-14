@@ -322,7 +322,7 @@
 			}
 		</code></pre>
 	</section>
-	<section><h3>implementation</h3>
+	<section><h3>implementation (MDN)</h3>
 		<pre><code rel="JS" class="js">
 			function makeIterator(array) {
 			    var index = 0;
@@ -341,6 +341,34 @@
 			while( element = it.next().value){
 				console.log(`${element}`);
 			}
+		</code></pre>
+	</section>
+	<section><h3>implementation (SS)</h3>
+		<pre><code rel="JS" class="js">
+			var agg = (function () {
+			var index = 0,
+					data = [1, 2, 3, 4, 5],
+					length = data.length;
+			return {
+				next: function () {
+					var element;
+					if (!this.hasNext()) {
+						return null;
+					}
+					element = data[index];
+					index = index + 2;
+					return element;
+				},
+				hasNext: function () {
+					return index < length;
+				}
+			};
+		}());
+
+		// this loop logs 1, then 3, then 5
+		while (agg.hasNext()) {
+			console.log(agg.next());
+		}
 		</code></pre>
 	</section>
 </section>
