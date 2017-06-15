@@ -84,68 +84,231 @@
 		<a href="images/simpleObserverDiagram.png"><img src="images/simpleObserverDiagram.png"></a>
 	</section>
 </section>
-<section><h2>Example - Subject-Observer Classes</h2>
-	<pre><code rel="JS" class="js">
-		//The Subject "class"
-		var Subject = function () {
-			this.observerList = [];
-		}
-		Subject.prototype.registerObserver = function(observer) {
-			this.observerList.push(observer);
-		}
-		Subject.prototype.unregisterObserver = function(observer) {
-			// find the Observer that wants to be removed
-			var index = this.observerList.indexOf(observer);
-			// Remove it from the array
-			this.observerList.splice(index, 1);
-		}
-		Subject.prototype.notifyObservers = function() {
-			for (let i = 0, len = this.observerList.length; i < len; i += 1) {
-				this.observerList[i].notify();
+<section><h2>Example - Subject-Observer</h2>
+	<section><h3>the pattern</h3>
+		<pre><code rel="JS" class="js">
+			//The Subject "class"
+			var Subject = function () {
+				this.observerList = [];
 			}
-		}
-
-		// The Observer "class"
-		var Observer = function() {
-			// notification means calling a method of the subscriber object
-			this.notify = function() {
-				throw "notify() is not implemented";
+			Subject.prototype.registerObserver = function(observer) {
+				this.observerList.push(observer);
 			}
-		}
-	</code></pre>
-</section>
-<section><h2>Example - Subject-Observer Use Case</h2>
-	<pre><code rel="JS" class="js">
-		var data = 0;
+			Subject.prototype.unregisterObserver = function(observer) {
+				// find the Observer that wants to be removed
+				var index = this.observerList.indexOf(observer);
+				// Remove it from the array
+				this.observerList.splice(index, 1);
+			}
+			Subject.prototype.notifyObservers = function() {
+				for (let i = 0, len = this.observerList.length; i < len; i += 1) {
+					this.observerList[i].notify();
+				}
+			}
 
-		// create Subject
-		var subject = new Subject();
+			// The Observer "class"
+			var Observer = function() {
+				// notification means calling a method of the subscriber object
+				this.notify = function() {
+					throw "notify() is not implemented";
+				}
+			}
+		</code></pre>
+	</section>
+	<section><h3>use case</h3>
+		<pre><code rel="JS" class="js">
+			var data = 0;
 
-		// create Observers
-		var a = new Observer();
-		a.notify = ()=> {console.log(data)}
-		var b = new Observer();
-		b.notify = ()=> {console.log(data)}
+			// create Subject
+			var subject = new Subject();
 
-		// Register the observers
-		subject.registerObserver(a);
-		subject.registerObserver(b);
+			// create Observers
+			var a = new Observer();
+			a.notify = ()=> {console.log(data)}
+			var b = new Observer();
+			b.notify = ()=> {console.log(data)}
 
-		// use
-		for (var i = 0; i < 4; i += 1){
+			// Register the observers
+			subject.registerObserver(a);
+			subject.registerObserver(b);
+
+			// use
+			for (var i = 0; i < 4; i += 1){
+				data += 1;
+				subject.notifyObservers();
+			}
+
+			// Unregister observer a
+			subject.unregisterObserver(a);
+
+			// change data and notify again
 			data += 1;
 			subject.notifyObservers();
-		}
-
-		// Unregister observer a
-		subject.unregisterObserver(a);
-
-		// change data and notify again
-		data += 1;
-		subject.notifyObservers();
-	</code></pre>
+		</code></pre>
+	</section>
 </section>
+<section><h2>Example - color list items by first letter select</h2>
+	<section>
+		<div class="observerWrapper" style="width: 10em;	margin: 3em auto;	border: 1px solid #999;">
+			<div class="subjectWrapper" style="height: 2em;	margin: .5em 0 0 0;	text-align: center;	border-bottom: 1px dotted #999">
+				<label>Select letter:</label>
+				<select class="subject" style="width: 3em;	font-size: 1em;text-align-last:center;">
+					<option value="a">a</option>
+					<option value="o">o</option>
+					<option value="e">e</option>
+					<option value="i">i</option>
+				</select>
+			</div>
+			<ul class="observers" style="margin: 0;">
+				<li style="list-style-type: none;	padding: .3em 0 0 .5em;">orchidea</li>
+				<li style="list-style-type: none;	padding: .3em 0 0 .5em;">astronaut</li>
+				<li style="list-style-type: none;	padding: .3em 0 0 .5em;">origami</li>
+				<li style="list-style-type: none;	padding: .3em 0 0 .5em;">Argentina</li>
+				<li style="list-style-type: none;	padding: .3em 0 0 .5em;">rocket</li>
+				<li style="list-style-type: none;	padding: .3em 0 0 .5em;">ontology</li>
+				<li style="list-style-type: none;	padding: .3em 0 0 .5em;">Einstein</li>
+			</ul>
+		</div>
+		<script type="text/javascript" src="examples/slides/paintOnStartingLetter/iepPaintOnStartingLetter/paintOnStartingLetter.js"></script>
+	</section>
+	<section>
+		<pre><code rel="HTML" class="html">
+			<div class="observerWrapper">
+				<div class="subjectWrapper">
+					<label>Select letter:</label>
+					<select class="subject">
+						<option value="a">a</option>
+						<option value="o">o</option>
+						<option value="e">e</option>
+						<option value="i">i</option>
+					</select>
+				</div>
+				<ul class="observers">
+					<li>orchidea</li>
+					<li>astronaut</li>
+					<li>origami</li>
+					<li>Argentina</li>
+					<li>rocket</li>
+					<li>ontology</li>
+					<li>Einstein</li>
+				</ul>
+			</div>
+		</code></pre>
+	</section>
+	<section>
+		<pre><code rel="CSS" class="css">
+			body{
+				font-size: 2em;
+			}
+			.observerWrapper{
+				width: 10em;
+				margin: 3em;
+				border: 1px solid #999;
+			}
+			.subjectWrapper{
+				height: 2em;
+				margin: .5em 0 0 0;
+				text-align: center;
+				border-bottom: 1px dotted #999;
+			}
+			.subjectWrapper>label{
+				display: inline-bwlock;
+				/*width: 100%;*/
+				/*height: 3em;*/
+			}
+			.subjectWrapper>select{
+				width: 3em;
+				font-size: 1em;
+			}
+			ul{
+				margin: 0;
+			}
+			li{
+				list-style-type: none;
+				padding: .3em 0 0 .5em;
+			}
+		</code></pre>
+	</section>
+	<section>
+		<pre><code rel="JS" class="js">
+			// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+			// The Subject (Publisher) "class", (the SELECT element in example)
+			var Subject = function () {
+					this.observerList = [];
+			}
+			Subject.prototype.registerObserver = function(observer) {
+					this.observerList.push(observer);
+			}
+			Subject.prototype.unregisterObserver = function(observer) {
+					// First we find the Observer that wants to be removed
+					var index = this.observerList.indexOf(observer);
+					// Remove the item from the array
+					this.observerList.splice(index, 1);
+			}
+			Subject.prototype.notifyObservers = function(params) {
+					for (let i = 0, len = this.observerList.length; i < len; i += 1) {
+						this.observerList[i].notify(params);
+					}
+			}
 
+			// The Observer "class"
+			var Observer = function() {
+					// Each observer must! implement their own version of notify:
+					this.notify = function() {
+							throw "Observer.notify() Not Implemented!";
+					}
+			}
+
+			// helper function to extend an object
+			var augment = function(receiver, giver){
+				for( key in giver){
+					receiver[key] = giver[key];
+				}
+			}
+
+
+			// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+			// MAIN
+			var nodes = {
+				subject: document.querySelector('.subject'),
+				observers: document.querySelectorAll('.observers>li'),
+			}
+			// attach listeners:
+			document.addEventListener("DOMContentLoaded", function(event) {
+			  nodes.subject.addEventListener('input', (e)=>{
+					var letter = e.target.value;
+					e.target.notifyObservers(letter);
+				})
+			});
+
+			// make nodes.subject a Subject
+			augment( nodes.subject, new Subject() );
+
+			// make each observer(LI element) an Observer
+			for( let observer of nodes.observers){
+				augment( observer, new Observer());
+
+				observer.notify = function(letter){
+					var firstLetter = observer.innerHTML.charAt(0);
+
+					if( firstLetter.toLowerCase() == letter.toLowerCase() ){
+						observer.style.color = '#F00';
+					}else{
+						observer.style.color = '#999';
+					}
+				};
+
+				// Register the observers to nodes.subject
+				nodes.subject.registerObserver(observer);
+			}
+		</code></pre>
+	</section>
+	<section><h3>downloads</h3>
+	<dl class="fa">
+		<dt>Download all files: <a href="examples/slides/paintOnStartingLetter/iepPaintOnStartingLetter.zip">PaintOnStartingLetter.zip</a></dt>
+	</dl>
+	</section>
+</section>
 <section><h2>Conclusion</h2>
 	<section>
 		<dl class="fa">
