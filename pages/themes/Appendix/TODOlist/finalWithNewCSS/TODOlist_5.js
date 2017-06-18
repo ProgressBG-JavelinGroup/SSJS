@@ -1,7 +1,8 @@
+console.time("test");
+
 var events = {
   events: {},
   subscribe: function(eventName, fn){
-  	console.log(`subscribe: ${eventName}`);
     this.events[eventName] = this.events[eventName] || [];
     this.events[eventName].push(fn);
   },
@@ -16,8 +17,6 @@ var events = {
     );
   },
   fire: function(eventName,args, thisObj) {
-  	console.log(`fire: ${eventName}`);
-		console.dir(this);
     var scope = thisObj || window;
     var handlers = this.events[eventName];
 
@@ -117,6 +116,7 @@ var myApp = {
 		// APIs
 		var addItem = function(e){
 			var itemContent = typeof e==='string'?e : nodes.newItemInput.value;
+			if(!itemContent) return;
 
 			items.push({content: itemContent, checked: false });
 			nodes.newItemInput.value = '';
@@ -174,7 +174,6 @@ var myApp = {
 		};
 
 		var itemStatusChange=function(dueItems){
-			console.log(`itemStatusChange fired!`);
 			render(dueTemplate, {dueItems: dueItems});
 		}
 
@@ -192,3 +191,5 @@ var myApp = {
 	},
 }
 myApp.init();
+
+console.timeEnd("test");
