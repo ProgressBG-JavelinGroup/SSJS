@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Custom checkbox</title>
+    <style type="text/css">
+    .test{
+    	font-size: 2em;
+    }
+    .test label{
+    	position: relative;
+    	border: 1px solid #F99;
+    }
+    .test label:before{
+    	display: inline-block;
+    	content: "";
+    	position: absolute;
+		top: 0; bottom: 0;
+		vertical-align: bottom;
+    	width: 1em;
+    	height: 1em;
+    	background: #7F7;
+    }
+     .test input[type="checkbox"]:checked{
+     	border: 5px solid green;
+     	width: 5em;
+     }
+    </style>
+</head>
+<body>
+<div class="test">
+	<input type="checkbox" name="chkAll" id="chkAll">
+	<label for="chkAll">selectAll</label>
+</div>
+</body>
+<script type="text/javascript" src="ht.js"></script>
+</html>

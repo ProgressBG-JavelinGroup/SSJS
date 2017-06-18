@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>eventDelegation</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<ul id="itemsContainer">
+		<li>
+			<label><input type="checkbox" name=""></label>Item1<i class="fa fa-trash-o"></i>
+		</li>
+		<li>
+			<label><input type="checkbox" name=""></label>Item2<i class="fa fa-trash-o"></i>
+		</li>
+	</ul>
+
+</body>
+<script type="text/javascript">
+	var nodes = {
+		ul: document.getElementById('itemsContainer')
+	}
+	nodes.ul.addEventListener('click', function(e){
+		console.log(`${e.target.nodeName} cicked`);
+	})
+</script>
+</html>
