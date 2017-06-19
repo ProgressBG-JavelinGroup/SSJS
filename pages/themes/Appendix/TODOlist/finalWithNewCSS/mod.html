@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TODOs mod</title>
+	<!-- VENDOR's -->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<style type="text/css">
+		body{
+			background: #BBBBDA;
+		}
+		.TODOlist{
+			min-height: 20vh;
+			background: #8B8BB4;
+		}
+		.stats{
+			/*min-height: 70vh;*/
+			font-size: 3em;
+			padding: 3em;
+			text-align: center;
+			color: #F0DFDF;
+
+		}
+		.TODOlist li>i.fa{
+			float: right;
+			font-size: 1em;
+			line-height: 2em;
+			padding: 0 .3em;
+		}
+		.TODOlist li>i.fa:hover{
+			font-weight: bold;
+			cursor: pointer;
+		}
+		.TODOlist li>i.fa:after{
+			display: block;
+			content: "";
+			clear: both;
+		}
+		.TODOlist li>i.fa-trash-o{
+			color: #f44336;
+		}
+	</style>
+</head>
+<body>
+	<section class="TODOlist">
+		<div class="header newItem">
+		  <h2 style="margin:5px">TODO List</h2>
+		  <input type="text" id="myInput" placeholder="New item..." tabindex="1">
+		  <span class="addBtn" tabindex="2">Add</span>
+		</div>
+		<ul id="itemTemplate"></ul>
+	</section>
+	<section class="stats">
+		<p>Due items:<span class="dueTemplate"></span></p>
+	</section>
+	<script type="text/javascript" src="TODOlist_5.js"></script>
+</body>
+</html>

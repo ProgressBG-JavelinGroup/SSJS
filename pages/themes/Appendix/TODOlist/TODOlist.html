@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>TODOlist</title>
+	<!-- VENDOR's -->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/handlebarsjs/4.0.8/handlebars.min.js"></script> -->
+	<!-- CUSTOM -->
+	<style type="text/css">
+		.TODOlist{
+			width: 20em;
+			color: #404040;
+		}
+		.TODOlist ul, li{
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+		.TODOlist li{
+			height: 2em;
+			line-height: 2em;
+			padding: 0 0 0 .3em;
+		}
+		.TODOlist li:nth-of-type(2n){
+			background: #B8FAFF;
+		}
+		.TODOlist li:nth-of-type(2n+1){
+			background: #FFB8FA;
+		}
+		.TODOlist li>i.fa{
+			float: right;
+			font-size: 1em;
+			line-height: 2em;
+			padding: 0 .3em;
+		}
+		.TODOlist li>i.fa:hover{
+			font-weight: bold;
+			cursor: pointer;
+		}
+		.TODOlist li>i.fa:after{
+			display: block;
+			content: "";
+			clear: both;
+		}
+		.TODOlist .newItem label>input[type="text"]{
+			width: 17em;
+		}
+		.TODOlist .newItem, .TODOlist .selectAll{
+			width: 100%;
+			margin: .5em 0 .5em 0;
+		}
+		.TODOlist .newItem>button{
+			float: right;
+		}
+		.TODOlist .newItem>button:after{
+			display: block;
+			content: "";
+			clear: both;
+		}
+		.TODOlist .selectAll{
+			/*border: 2px solid #999;*/
+		}
+		.TODOlist .selectAll label{
+			position: relative;
+			display: inline-block;
+			/*border: 1px solid #00FDFF;*/
+			/*background: #00FDFF;*/
+		}
+		.TODOlist .selectAll label:before{
+			display: inline-block;
+			content: "";
+			position: absolute;
+			top: 0; bottom: 0;
+			width: 1em;
+			/*height: 1em;*/
+			border: 1px solid #FF00B1;
+		}
+		.TODOlist .selectAll label span{
+			margin: 0 0 0 1em;
+		}
+		.TODOlist .selectAll input{
+			/*width: 2em;*/
+			visibility: hidden;
+			border: 1px solid #6BFF00;
+			background: red;
+		}
+	</style>
+</head>
+
+<body>
+	<section class="TODOlist">
+		<div>
+			<h2>TODOs</h2>
+			<div class="newItem">
+				<label>New: <input type="text" name=""></label>
+				<button>Add</button>
+			</div>
+		</div>
+		<!-- <script id="itemsTemplate" type="text/template">
+			{{#listItems}}
+				<li><label><input type="checkbox" name=""></label>{{itemName}} <i class="fa fa-trash-o"></i></li>
+			{{/listItems}}
+		</script> -->
+		<ul></ul>
+		<div class="selectAll">
+			<label><input type="checkbox" name=""><span>select all</span></label>
+		</div>
+	</section>
+	<section class="TODOstats">
+		<div></div>
+	</section>
+</body>
+<script type="text/javascript" src="TODOlist_4.js"></script>
+</html>
