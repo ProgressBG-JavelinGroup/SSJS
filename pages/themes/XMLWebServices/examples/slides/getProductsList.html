@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>getTextFileDataByXMLHttpRequest</title>
+</head>
+<body>
+	<p id="output"></p>
+
+	<script>
+		var productsListFile = "products.list";
+
+		var loadXMLDoc = function() {
+		  var xhr;
+		  if (window.XMLHttpRequest) {
+		    xhr = new XMLHttpRequest();
+		  }; // add else for old browsers
+
+		  xhr.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+		      parseProductList(this.responseText);
+		    }
+		  };
+		  xhr.open("GET", productsListFile, true);
+		  xhr.send();
+		}
+		var parseProductList = function(text){
+			var lines = text.split(/[\r\n]+/); // MacOS, Windows, Linux EOL
+			lines.forEach(line=>{
+				console.log(`line: ${line}`);
+			})
+		}
+		loadXMLDoc();
+	</script>
+</body>
+</html>

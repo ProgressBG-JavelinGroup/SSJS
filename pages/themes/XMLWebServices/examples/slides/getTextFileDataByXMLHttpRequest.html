@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>getTextFileDataByXMLHttpRequest</title>
+</head>
+<body>
+	<p id="output"></p>
+
+	<script>
+		function loadXMLDoc() {
+		  var xhr;
+		  if (window.XMLHttpRequest) {
+		    xhr = new XMLHttpRequest();
+		  }; // add else for old browsers
+
+		  xhr.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+		      document.getElementById("output").innerHTML =
+		      this.responseText;
+		    }
+		  };
+		  xhr.open("GET", "test.text", true);
+		  xhr.send();
+		}
+		loadXMLDoc();
+	</script>
+</body>
+</html>
