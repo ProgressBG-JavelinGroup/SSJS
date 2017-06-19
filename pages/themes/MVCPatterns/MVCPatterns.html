@@ -73,20 +73,126 @@
 	</section>
 </section>
 
-<section data-notes="20min"><h2>MVC</h2>
-	<section><h3>intro</h3>
-		<p>The Model-View-Controller paradigm</p>
+<section data-notes="20min"><h2>MVC (Model View Controller)</h2>
+	<section>
+		<p>The <b>M</b>odel-<b>V</b>iew-<b>C</b>ontroller paradigm</p>
+	</section>
+	<section><h3>history</h3>
+		<dl class="fa">
+			<dt>suggested in the late 1970s</dt>
+			<dt>during 1980s, became heavily used in Smalltalk (the language that made classes famous).</dt>
+		</dl>
+	</section>
+	<section><h3>why && when to use?</h3>
+		<dl class="fa">
+			<dt>when you have to create rich, interactive user interfaces</dt>
+			<dt>encourages improved application architecture through a separation of concerns.</dt>
+			<dt>separating out the application logic from the user interface allows the reuse of models for other interfaces in the application</dt>
+		</dl>
+	</section>
+	<section><h3>MVC in JavaScript</h3>
+		<p>MVC or its variations (MV* family) are the bases of: <b>Backbone.js</b>, <b>Knockout.js</b>, <b>Ember.js</b>, <b>AngularJS</b>, <b>Vue.js</b> and so...on.</p>
+	</section>
+	<section style="font-size: .8em"><h3>the original MVC concept</h3>
+		<dl class="fa">
+			<dt>A Model represented domain-specific data and was ignorant of the user-interface (Views and Controllers). When a model changed, it would inform its observers.</dt>
+			<dt>A View represented the current state of a Model. The Observer pattern was used for letting the View know whenever the Modxel was updated or modified.</dt>
+			<dt>Presentation was taken care of by the View, but there wasn't just a single View and Controller - a View-Controller pair was required for each section or element being displayed on the screen.</dt>
+			<dt>The Controllers role in this pair was handling user interaction (such as key-presses and actions e.g. clicks), making decisions for the View.</dt>
+		</dl>
+	</section>
+	<section>
+		<a href="images/MVC-Process_wiki.svg"><img src="images/MVC-Process_wiki.svg"></a>
+	</section>
+	<section>
+		<dl class="fa">
+			<dt><span class="note">Model</span></dt>
+			<dd>is where the data leaves (from flat files to large RDBMS)</dd>
+			<dt><span class="note">View</span></dt>
+			<dd>is what the user see, i.e. a visual representation of the model</dd>
+			<dt><span class="note">Controller</span></dt>
+			<dd>is responsible for updating the model after user interaction. Usually contains all the logic and business rules to update fields on the model</dd>
+		</dl>
+	</section>
+	<section><h3>Model Example</h3>
+		<pre><code rel="JS" class="js">
+			class LoginModel{
+				UserName: string;
+				Password: string;
+
+				RememberMe: bool;
+				LoginSuccessful: bool;
+				LoginErrorMessage: string;
+				Timestamp: date;
+			}
+		</code></pre>
+	</section>
+	<section><h3>View Example</h3>
+		<a href="images/login-form-wordpress.jpg"><img src="images/login-form-wordpress.jpg"></a>
+	</section>
+	<section><h3>Controller Example</h3>
+		<pre><code rel="JS" class="js">
+			var LoginController = (function () {
+			function LoginController(model) {
+				this.model = model;
+			}
+
+			LoginController.prototype.Login = function (userName, password,rememberMe) {
+				this.model.UserName = userName;
+				this.model.Password = password;
+				this.model.RememberMe = rememberMe;
+
+				if (this.checkPassword(userName, password))
+					this.model.LoginSuccessful;
+				else {
+					this.model.LoginSuccessful = false;
+					this.model.LoginErrorMessage = "Incorrect username or
+					password";
+				}
+			};
+		return LoginController;
+		})();
+		</code></pre>
+	</section>
+	<section><h3>MVC Practice - simple MVC calc app</h3>
+		<dl class="fa">
+
+		</dl>
 	</section>
 </section>
-<section data-notes="20min"><h2>MVP</h2>
+<section data-notes="20min"><h2>MVP (Model View Presenter)</h2>
+	<section>
+		<dl class="fa">
+			<dt><span class="note">Model-View-Presenter</span> (MVP) is a derivative of the MVC design pattern which focuses on improving presentation logic</dt>
+			<dt>Well-known in Microsoft world (WPF, Silverlight)</dt>
+		</dl>
+	</section>
 	<section><h3></h3>
-
+		<a href="images/Model_View_Presenter_GUI_Design_Pattern.png"><img src="images/Model_View_Presenter_GUI_Design_Pattern.png"></a>
+	</section>
+	<section>
+		<dl class="fa">
+			<dt>The presenter is aware of both the view and the model</dt>
+			<dt>The view is unaware of the model</dt>
+			<dt>The model is unaware of the view</dt>
+		</dl>
 	</section>
 </section>
-<section data-notes="20min"><h2>MVVP</h2>
-	<section><h3></h3>
-
+<section><h2>MVVM (Model View ViewModel)</h2>
+	<section>
+		<a href="images/MVVMPatternByTimmsBook.png"><img src="images/MVVMPatternByTimmsBook.png"></a>
 	</section>
+	<section>
+		<dl class="fa">
+			<dt>the View holds a reference to the View Model</dt>
+			<dt>the ViewModel has no information about the View</dt>
+			<dt>the View has no idea about the Model</dt>
+		</dl>
+	</section>
+</section>
+<section><h2>Visual Comparison</h2>
+	<a href="images/MV_Comparison.png"><img src="images/MV_Comparison.png"></a>
+	<p>Picture from <a href="http://geekswithblogs.net/dlussier/archive/2009/11/21/136454.aspx">MVVM Compared To MVC and MVP by geekswithblogs.net</a></p>
 </section>
 
 <section class="disclaimer" data-background="../../../outfit/images/for_slides/the_end_on_sand.jpg">
