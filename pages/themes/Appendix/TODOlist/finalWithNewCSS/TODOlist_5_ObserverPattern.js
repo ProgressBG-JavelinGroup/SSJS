@@ -1,7 +1,10 @@
 console.time("test");
 
-var events = {
-  events: {},
+var subject = {
+  events: {
+  	'event1': [fn1, fn2],
+  },
+  // events.subscribe('itemStatusChange', itemStatusChange);
   subscribe: function(eventName, fn){
     this.events[eventName] = this.events[eventName] || [];
     this.events[eventName].push(fn);
@@ -17,11 +20,10 @@ var events = {
     );
   },
   fire: function(eventName,args, thisObj) {
-    var scope = thisObj || window;
     var handlers = this.events[eventName];
 
     handlers.forEach(function(item) {
-        item.call(scope, args);
+        item.call(args);
     });
   }
 };
@@ -153,14 +155,14 @@ var myApp = {
 		var dueItems = 0;
 		var nodes = {};
 		var dueTemplate = `
-			{{dueItems}}
+			<em>{{dueItems}}</em>
 		`;
 
 		var getNodes=function(){
 			nodes.stats = document.getElementsByClassName("stats")[0];
 			nodes.dueTemplate = nodes.stats.querySelector('.dueTemplate');
 		};
-		var bindEvents=function(){
+		var subscribeObserver=function(){
 			events.subscribe('itemStatusChange', itemStatusChange);
 		};
 		var render = function(tmpl=dueTemplate, replObj){

@@ -1,0 +1,25 @@
+var events = {
+  events: {},
+  subscribe: function(eventName, fn){
+    this.events[eventName] = this.events[eventName] || [];
+    this.events[eventName].push(fn);
+  },
+  unsubscribe: function(eventName, fn) {
+		var handlers = this.events[eventName];
+    handlers = handlers.filter(
+        function(item) {
+            if (item !== fn) {
+                return item;
+            }
+        }
+    );
+  },
+  fire: function(eventName,args, thisObj) {
+    var scope = thisObj || window;
+    var handlers = this.events[eventName];
+
+    handlers.forEach(function(item) {
+        item.call(scope, args);
+    });
+  }
+};

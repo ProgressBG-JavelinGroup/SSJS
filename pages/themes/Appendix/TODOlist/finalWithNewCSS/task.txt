@@ -1,0 +1,10 @@
+ Add the JavaScript code which will make fully functional the given TODOlist.
+
+ You can not change the HTML && CSS
+ You should structure your code, using patterns, like:
+ 	- Module patterns
+ 	- Observer (or kind of Subscriber-Publisher) pattern
+
+ You have to define 2 components:
+ 	- TODOlist
+ 	- TODOstats
