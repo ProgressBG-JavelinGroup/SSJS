@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>JSONForWebServices</title>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+	<!-- css & themes include -->
+	<link rel="stylesheet" href="../../../lib/reveal.js/css/reveal.css">
+	<link rel="stylesheet" href="../../../outfit/css/themes/projector.css" id="theme">
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? '../../../lib/reveal.js/css/print/pdf.css' : '../../../lib/reveal.js/css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+	<!-- CUSTOM -->
+	<base target="_blank">
+</head>
+<body>
+	<div class="reveal default center" data-transition-speed="default" data-background-transition="default">
+		<div class="top_links">
+			<a class="home_link" href="/index.html#Course_Intro" target="_top"><i class="fa fa-home"></i></a>
+			<span class="help_link" href="#"><i class="fa fa-question"></i></span>
+			<div class="help_text">
+				<div><span>N/Space</span><span>Next Slide</span></div>
+				<div><span>P</span><span>Previous Slide</span></div>
+				<div><span>O</span><span>Slides Overview</span></div>
+				<div><span>ctrl+left click</span><span>Zoom Element</span></div>
+			</div>
+		</div>
+		<div class="footer theme_switch">
+			<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../../outfit/css/themes/dark.css'); return false;">Dark</a>
+			<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../../outfit/css/themes/light.css'); return false;">Light</a>
+			<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../../outfit/css/themes/projector.css'); return false;">Projector</a>
+		</div>
+		<div class="slides">
+<!--
+########################################################
+##################### SLIDES START #####################
+########################################################
+-->
+<section><h1>JSON For Web Services</h1></section>
+<section data-transition="zoom">
+	<section>
+		<div class="copyright">
+			<div class="note">
+				<p>Created for</p>
+			</div>
+			<div class="company">
+				<a href="http://www.javelingroup.com/">
+					<img src="../../../outfit/images/for_slides/JavelinLogo.png" alt="JavelinGroup" style="border-radius: 100%">
+				</a>
+			</div>
+		</div>
+	</section>
+	<section class="copyright" data-transition="zoom" style="margin-top: -2em;">
+		<div class="note">
+			<p>Created by</p>
+		</div>
+		<div class="company">
+			<div class="LI-profile-badge" data-version="v1" data-size="large" data-locale="en_US" data-type="vertical" data-theme="dark" data-vanity="ivapopova"><a class="LI-simple-link" href='https://bg.linkedin.com/in/ivapopova?trk=profile-badge'>Iva E. Popova</a></div>
+		</div>
+		<!-- <div class="author">
+			<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
+		</div> -->
+	</section>
+</section>
+
+<section data-notes="20min"><h2>intro</h2>
+	<section>
+		<dl class="fa">
+			<dt>JSON = <b>J</b>ava<b>S</b>cript <b>O</b>bject <b>N</b>otation</dt>
+			<dt>A <span class="note">data-interchange format</span></dt>
+			<dt>Language agnostic</dt>
+			<dt>Proposed by <a href="https://en.wikipedia.org/wiki/Douglas_Crockford">Douglas Crockford</a> in early 2000s</dt>
+		</dl>
+	</section>
+	<section><h3>Why JSON</h3>
+		<dl class="fa">
+			<dt>Easy for humans (and the machines) to read and write</dt>
+			<dt>Minimalistic syntax</dt>
+			<dt>A strict subset of JavaScript (could be passed directly to <code>eval()</code>)</dt>
+			<dt><a href="https://en.wikipedia.org/wiki/JSON#JSON_Schema">JSON Schema</a> defined</dt>
+		</dl>
+	</section>
+	<section><h3>JSON vs XML</h3>
+	<pre><code rel="JSON" class="js">
+		{
+			'fruits': ['apple', 'orange', 'banana'],
+		}
+	</code></pre>
+	<pre><code rel="XML" class="js">
+		<fruits>
+			<fruit>apple</fruit>
+			<fruit>orange</fruit>
+			<fruit>banane</fruit>
+		</fruits>
+	</code></pre>
+	<p><a href="http://json.org/example.html">JSON Example</a></p>
+	</section>
+</section>
+<section style="font-size: 0.7em"><h2>Syntax</h2>
+	<section><h3>JSON's basic data types</h3>
+	<dl class="fa">
+		<dt class="note">Number</dt>
+		<dd>a signed decimal number that may contain a fractional part</dd>
+		<dt class="note">String</dt>
+		<dd>a sequence of zero or more Unicode characters, delimited by double quotation mark</dd>
+		<dt class="note">Boolean</dt>
+		<dd>either of the values true or false</dd>
+		<dt class="note">Array</dt>
+		<dd>an ordered list of zero or more values (may be of any type). Comma-separated elements in square brackets</dd>
+		<dt class="note">Object</dt>
+		<dd>an unordered collection of <code>name:value</code> pairs, delimited by curly braces, where the names (also called keys) are strings. Pairs are separated by comma.</dd>
+	</dl>
+	</section>
+</section>
+<section><h2>JSON WebServices</h2>
+	<section><h3>fetch data by XHR</h3>
+		<pre><code rel="JS" class="js">
+			var fetchByXHR = {
+				get: function(url){
+					var xhr = window.XMLHttpRequest ? new XMLHttpRequest() :
+									new ActiveXObject("Microsoft.XMLHTTP");
+
+					xhr.open("GET", url, true);
+					xhr.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+							renderHTML(this.responseText);
+						};
+					};
+
+					xhr.send();
+				},
+			};
+		</code></pre>
+	</section>
+	<section><h3>fetch by <code>fetch</code></h3>
+		<pre><code rel="JS" class="js">
+			fetch(url).then(function (response) {
+				response.text().then(function (responseText) {
+					renderHTML(responseText);
+				});
+			});
+		</code></pre>
+		<p class="note">Async by promises!</p>
+	</section>
+	<section><h23>JSON to JS object</h3>
+		<pre><code rel="JS" class="js">
+			var obj = JSON.parse(response);
+		</code></pre>
+	</section>
+	<section><h3>JS obj to JSON</h3>
+		<pre><code rel="JS" class="js">
+			var json = JSON.stringify(obj);
+		</code></pre>
+	</section>
+</section>
+<section><h2>Exercises && Tasks</h2>
+	<section><h3>GitHub: top 10 last updated</h3>
+		<p>Generate an HTML list with the top 10 repositories from a given user, sorted by <b>last-updated</b> order</p>
+		<p>Note: use the <a href="https://developer.github.com/v3/repos/#list-user-repositories">GitHub REST API v3 (List user repositories)</a></p>
+	</section>
+</section>
+
+<section class="disclaimer" data-background="../../../outfit/images/for_slides/the_end_on_sand.jpg">
+	<p>These slides are based on</p>
+	<p>customised version of </p>
+	<p><a href="http://hakim.se/">Hakimel</a>'s <a href="http://lab.hakim.se/reveal-js">reveal.js</a></p>
+	 <p>framework</p>
+</section>
+<!--
+########################################################
+##################### SLIDES END   #####################
+########################################################
+-->
+		</div>
+	</div>
+	<!-- Custom processing -->
+	<script src="../../../outfit/js/slides.js"></script>
+	<!-- external scripts -->
+	<script src="../../../lib/reveal.js/lib/js/head.min.js"></script>
+	<script src="../../../lib/reveal.js/js/reveal.js"></script>
+
+	<!-- init reveal -->
+	<script>
+		// Full list of configuration options available at:
+		// https://github.com/hakimel/reveal.js#configuration
+		var highlightjsTabSize = '  ';
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			slideNumber: 'c/t',
+			keyboard: true,
+			history: true,
+
+			// display control
+			// center: true,
+			// width: '100%',
+			// height: '100%',
+			// // Factor of the display size that should remain empty around the content
+			// margin: 0.1,
+
+			// The "normal" size of the presentation, aspect ratio will be preserved
+			// when the presentation is scaled to fit different resolutions. Can be
+			// specified using percentage units.
+			width: 960,
+			height: 700,
+
+			// Factor of the display size that should remain empty around the content
+			margin: 0.1,
+
+			// Bounds for smallest/largest possible scale to apply to content
+			minScale: 0.2,
+			maxScale: 1.5,
+
+			// slide transition
+			transition: 'concave', // none/fade/slide/convex/concave/zoom
+			// shift+maous click to zoom in/out element
+			zoomKey: 'ctrl',
+			// theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+			// transition: Reveal.getQueryHash().transition || 'default'
+			// Optional reveal.js plugins
+			dependencies: [
+				{ src: '../../../lib/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				{ src: '../../../lib/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: '../../../lib/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: '../../../lib/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.configure({tabReplace: highlightjsTabSize}); hljs.initHighlightingOnLoad(); } },
+				{ src: '../../../lib/reveal.js/plugin/zoom-js/zoom.js', async: true },
+				{ src: '../../../lib/reveal.js/plugin/notes/notes.js', async: true }
+			]
+		});
+	</script>
+	<!-- linkedin badge -->
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</body>
+</html>
