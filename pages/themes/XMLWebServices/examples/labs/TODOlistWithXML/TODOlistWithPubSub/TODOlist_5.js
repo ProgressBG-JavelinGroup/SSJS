@@ -62,6 +62,11 @@ var myApp = {
 			// {content: 'item1', checked: false },
 			// {content: 'item2', checked: false },
 			// {content: 'item3', checked: false },
+			// {content: 'item3', checked: false },
+			// {content: 'item3', checked: false },
+			// {content: 'item3', checked: false },
+			// {content: 'item3', checked: false },
+			// {content: 'item3', checked: false },
 		];
 		var XMLitems = getXMLdata.makeRequestNew();
 		var nodes = {};
