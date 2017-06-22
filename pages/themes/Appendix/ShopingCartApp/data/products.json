@@ -1,0 +1,132 @@
+[
+	{
+		"id": 1,
+		"name": "Product1",
+		"price": 1.00,
+		"image": {
+			"small": "images/small/p1.png",
+			"big": "images/big/p1.png"
+		},
+		"description":{
+			"short": "short description of product 1",
+			"long": "long description of product 1"
+		}
+	},
+	{
+		"id": 2,
+		"name": "Product1",
+		"price": 2.00,
+		"image": {
+			"small": "images/small/p2.png",
+			"big": "images/big/p2.png"
+		},
+		"description":{
+			"short": "short description of product 2",
+			"long": "long description of product 2"
+		}
+	},
+	{
+		"id": 3,
+		"name": "Product1",
+		"price": 3.00,
+		"image": {
+			"small": "images/small/p3.png",
+			"big": "images/big/p3.png"
+		},
+		"description":{
+			"short": "short description of product 3",
+			"long": "long description of product 3"
+		}
+	},
+	{
+		"id": 4,
+		"name": "Product1",
+		"price": 4.00,
+		"image": {
+			"small": "images/small/p4.png",
+			"big": "images/big/p4.png"
+		},
+		"description":{
+			"short": "short description of product 4",
+			"long": "long description of product 4"
+		}
+	},
+	{
+		"id": 5,
+		"name": "Product1",
+		"price": 5.00,
+		"image": {
+			"small": "images/small/p5.png",
+			"big": "images/big/p5.png"
+		},
+		"description":{
+			"short": "short description of product 5",
+			"long": "long description of product 5"
+		}
+	},
+	{
+		"id": 6,
+		"name": "Product1",
+		"price": 6.00,
+		"image": {
+			"small": "images/small/p6.png",
+			"big": "images/big/p6.png"
+		},
+		"description":{
+			"short": "short description of product 6",
+			"long": "long description of product 6"
+		}
+	},
+	{
+		"id": 7,
+		"name": "Product1",
+		"price": 7.00,
+		"image": {
+			"small": "images/small/p7.png",
+			"big": "images/big/p7.png"
+		},
+		"description":{
+			"short": "short description of product 7",
+			"long": "long description of product 7"
+		}
+	},
+	{
+		"id": 8,
+		"name": "Product1",
+		"price": 8.00,
+		"image": {
+			"small": "images/small/p8.png",
+			"big": "images/big/p8.png"
+		},
+		"description":{
+			"short": "short description of product 8",
+			"long": "long description of product 8"
+		}
+	},
+	{
+		"id": 9,
+		"name": "Product1",
+		"price": 9.00,
+		"image": {
+			"small": "images/small/p9.png",
+			"big": "images/big/p9.png"
+		},
+		"description":{
+			"short": "short description of product 9",
+			"long": "long description of product 9"
+		}
+	},
+	{
+		"id": 10,
+		"name": "Product1",
+		"price": 10.00,
+		"image": {
+			"small": "images/small/p10.png",
+			"big": "images/big/p10.png"
+		},
+		"description":{
+			"short": "short description of product 10",
+			"long": "long description of product 10"
+		}
+	}
+]
