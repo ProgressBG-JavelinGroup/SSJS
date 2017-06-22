@@ -1,0 +1,23 @@
+1. Find the GitHub user with most followers and create HTML list with his/hers top5 repos sorted by collaborators:
+	<help>
+		<searchApi>https://developer.github.com/v3/search/</searchApi>
+		<example>https://api.github.com/search/repositories?q=tetris+language:assembly&sort=stars&order=desc</example>
+	</help>
+
+
+2.Filter: 10 (last-updated) Microsoft repos, and then:
+	<easy_task>
+		sort: most-wathcers >> sort: open-issues
+		<sample_ouptut>
+			repo4: watchers=>97; 	issues:40
+			repo3: watchers=>98; 	issues:30
+			repo1: watchers=>100; 	issues:20
+			repo2: watchers=>99; 	issues:20
+			repo5: watchers=>96; 	issues:10
+		</sample_ouptut>
+	</easy_task>
+	<hard_task>
+		sort: most-contributors >> sort: most-commits
+	</hard_task>
+
+
